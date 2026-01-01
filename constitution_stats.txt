@@ -1,0 +1,10 @@
+Indian Constitution PDF Statistics
+=====================================
+
+File Size: 2,413,611 bytes (2.30 MB)
+Total Pages: 402
+Total Characters: 868,516
+Total Words: 139,098
+Total Lines: 14,653
+Average Characters per Page: 2,160
+Average Words per Page: 346

@@ -1,0 +1,757 @@
+Quantum Computing: Vision and Challenges
+Sukhpal Singh Gilla, Oktay Cetinkayab, Stefano Marronec, Daniel Claudinod,
+David Haunschilde, Leon Schlotef, Huaming Wug, Carlo Ottavianih, Xiaoyuan Liui, Sree
+Pragna Machupallij, Kamalpreet Kaurk, Priyansh Aroral, Ji Lium, Ahmed Faroukn, Houbing
+Herbert Songo, Steve Uhligaand Kotagiri Ramamohanaraop
+aSchool of Electronic Engineering and Computer Science, Queen Mary University of London, London, UK,
+bOxford e-Research Centre (OeRC), Department of Engineering Science, University of Oxford, Oxford, UK,
+cDipartimento di Matematica e Fisica, Università della Campania “Luigi Vanvitelli”, Italy,
+dQuantum Information Science Section, Oak Ridge National Laboratory, Oak Ridge, TN, USA,
+eDetecon International GmbH, Munich, Germany,
+fDB Cargo, Berlin, Germany,
+gCenter for Applied Mathematics, Tianjin University, Tianjin, China,
+hDepartment of Computer Science and York Centre for Quantum Technologies, University of York, York, UK,
+iFujitsu Research of America, Inc., Santa Clara, CA, USA,
+jInformation Networking Institute, Carnegie Mellon University, USA,
+kCymax Group Technologies, British Columbia, Canada,
+lMicrosoft, Schiphol, Netherlands,
+mMathematics and Computational Research Division, Argonne National Laboratory, IL, USA,
+nDepartment of Computer Science, Faculty of Computers and Artificial Intelligence, South Valley University, Hurghada, Egypt,
+oDepartment of Information Systems University of Maryland, Baltimore County (UMBC), Baltimore, USA,
+pRetired Professor, The University of Melbourne, Victoria, Australia,
+ARTICLE INFO
+Keywords :
+Quantum Computing
+Artificial Intelligence
+Machine Learning
+Cryptography
+Cyber Security
+QubitsABSTRACT
+The recent development of quantum computing, which uses entanglement, superposition,
+and other quantum fundamental concepts, can provide substantial processing advantages over
+traditional computing. These quantum features help solve many complex problems that cannot
+be solved otherwise with conventional computing methods. These problems include modeling
+quantum mechanics, logistics, chemical-based advances, drug design, statistical science, sus-
+tainable energy, banking, reliable communication, and quantum chemical engineering. The last
+few years have witnessed remarkable progress in quantum software and algorithm creation and
+quantumhardwareresearch,whichhassignificantlyadvancedtheprospectofrealizingquantum
+computers. It would be helpful to have comprehensive literature research on this area to grasp
+the current status and find outstanding problems that require considerable attention from the
+researchcommunityworkinginthequantumcomputingindustry.Tobetterunderstandquantum
+computing, this paper examines the foundations and vision based on current research in this
+area. We discuss cutting-edge developments in quantum computer hardware advancement and
+subsequentadvancesinquantumcryptography,quantumsoftware,andhigh-scalabilityquantum
+computers.Manypotentialchallengesandexcitingnewtrendsforquantumtechnologyresearch
+and development are highlighted in this paper for a broader debate.
+1. Promising Age of Quantum Computing
+ManyexpertsregardRichardFeynman’s1982talkasamongthefirstideasforquantumcomputing[1,2].Feynman
+imagined a quantum machine that could imitate quantum physics by using the principles of quantum mechanics.
+∗Correspondence to: School of Electronic Engineering and Computer Science, Queen Mary University of London, London, E1 4NS, UK.
+s.s.gill@qmul.ac.uk (S.S. Gill); oktay.cetinkaya@eng.ox.ac.uk (O. Cetinkaya); stefano.marrone@unicampania.it (S.
+Marrone); claudinodc@ornl.gov (D. Claudino); david.haunschild@detecon.com (D. Haunschild); leon.schlote@deutschebahn.com
+(L. Schlote); whming@tju.edu.cn (H. Wu); carlo.ottaviani@york.ac.uk (C. Ottaviani); xliu@fujitsu.com (X. Liu);
+smachupa@andrew.cmu.edu (S.P. Machupalli); kamalpreet.k@cymax.com (K. Kaur); priyansh.arora@microsoft.com (P. Arora);
+ji.liu@anl.gov (J. Liu); ahmed.farouk@sci.svu.edu.eg (A. Farouk); songh@umbc.edu (H.H. Song); steve.uhlig@qmul.ac.uk (S.
+Uhlig); rkotagiri@gmail.com (K. Ramamohanarao)
+ORCID(s):0000-0002-3913-0369 (S.S. Gill)
+S S Gill et al.: Preprintversion Page 1 of 15arXiv:2403.02240v4  [cs.DC]  6 Sep 2024
+Quantum Computing: Vision and Challenges
+According to Feynman’s view, a computer based on quantum mechanical fundamentals might be necessary to mimic
+naturaloccurrences,asNatureisfundamentallyquantummechanical[3].Theadventofquantumcomputershasopened
+up new avenues for this kind of thinking, since they can harness the incredible processing power required to model
+intricate quantum systems by making use of quantum mechanical features such as superposition, interference, and
+entanglement [4]. Early efforts to build hardware for quantum computers moved at a snail’s pace due to challenging
+technicalproblems,makingitdifficulttoshieldandcoherentlycontrolthedynamicsofquantummechanicalproperties
+present at the most essential scales of nature (e.g., electron spin or photon polarization) [5].
+However, quantum computing is one of the most talked-about fields (as of 2024), and its progress has been
+growingatatremendouspaceinrecentyears[6].Thereisagreatdealofenthusiasmamongacademicsandbusinesses
+alike to construct initial quantum computers due to their promise of providing, for certain tasks, processing powers
+beyondthoseofcurrentmostpowerfulsupercomputers.Strongeffortstobuildlarge-scalequantumcomputersarenow
+underwaywith severalestablished corporations(Chinese companieslike ZTE,QUDOOR andUSA basedcompanies
+such as Honeywell, Intel, Google, Microsoft, and IBM), growing small and medium-sized enterprises (e.g., D-
+Wave),andaspiringstartups(e.g.,Rigetti,Xanadu,Infleqtion,OriginQuantum,andIonQ).Therehasbeenenormous
+advancement in quantum algorithms and quantum software in recent years, which has occurred in tandem with the
+development of quantum hardware.
+It is well-known that traditional digital computing relies on bits that are limited to two possible values—‘0’ or
+‘1’—tostoreandprocessdata.Inquantumcomputing,thecorrespondingunitisthequantumbit(qubit)that,according
+to quantum physics, may have either a value of ‘0’ or ‘1’ or exist on a superposition of the two (functionally being in
+bothstatessimultaneously!)[7,8,9].Becauseofthis,quantumcomputershaveaccesstoacomputationalfield(known
+as Hilbert space [10]) of huge dimension, where 𝑛qubits might be in a superposition state with 2𝑛potential values
+at any one moment. Due to the exponential growth of the parameter space, problems on a large scale are expected to
+be easier to solve with the advent of quantum computers. Nevertheless, developing a large-scale quantum computer
+has its own set of challenges. The most demanding to mitigate is the decoherence of the quantum states on which
+qubits are encoded. Decoherence happens when qubits interact with their surrounding environment and lose their
+coherent features. For that it represents one of the biggest obstacles to developing large-scale quantum devices [11].
+Assumingtheunavoidablepresenceofenvironmentalnoise,“NoisyIntermediateScaleQuantum(NISQ)”devices,try
+to deal with imperfections and losses driven by decoherence. Reducing the probability of decoherence and creating
+effective error correction procedures to overcome defects in NISQ devices are important goals of current studies in
+quantumcomputing[12].Thesecondbigproblemwithmodernquantumdevicesistoidentifyapproachestoeffectively
+engineer and interconnect (entangle) qubits [13]. At the moment of writing current quantum devices are able to deal
+with relatively sparsely connected qubits, making it difficult to map deep quantum circuits with multiple two-qubit
+gates that necessitate strong couplings between qubits [14].
+1.1QuantumSupremacy: Regardlessoftechnologicalhurdles,NISQquantumcomputershaveshownpromising
+computing capability in their early stages. Google’s recent proof of quantum supremacy is a major step forward for
+quantum computing [15]. There is currently a worldwide race to be the first to implement quantum computing in
+order to tackle a practical problem that a conventional computer cannot solve in a reasonable time — also known as
+“quantum advantage” . To reach this desired level of quantum computing, it is necessary to reduce the probability
+of the decoherence of qubits drastically through improvements in quantum hardware, quantum algorithms, and error
+correctionduringtheupcomingyears.Alotofworkisbeingputintodevelopingandbenchmarkingquantumalgorithms
+using NISQ devices. While Shor’s and Grover’s quantum algorithms were among the first that stood out in the early
+1990s,hundredsofotheralgorithmshavebeeninventedsincethen.VariationalQuantumEigensolver(VQE)[16,17]
+andothervariationalquantumalgorithms[18]areapopularkindofhybridquantum-classicalalgorithmthatcombines
+the advantages of the two technologies. On NISQ devices, VQE algorithms have performed exceptionally well in
+solvingquantummechanicalproblemsandQuantumArtificialIntelligence(QAI)tasks[19].Whilealargeandresilient
+quantumcomputerisnotavailableyetandwillstillrequiresignificantadvancementsbeforeitsfullpromiseforpractical
+applications can be realised, quantum computing is already available for research and prototyping scenarios with
+encouraging results on current NISQ-era equipment [20].
+Whenappliedtoclassicaldata,QAIhasthepotentialtogreatlyacceleratemachineintelligencetechniques[21,22].
+Quantumneuralnetworks,quantumsupportvectormachines,andquantumprinciplecomponentevaluationhavebeen
+studied[23,24],andsomerecentresearchreturnedencouragingfindings[25],althoughitisstillnotcompletelyknown
+if quantum neural networks will provide better computing efficiency than traditional machine learning techniques.
+S S Gill et al.: Preprintversion Page 2 of 15
+Quantum Computing: Vision and Challenges
+ •Logistics, T elecommuting, Electrical Power, Banking (for rapid Risk Estimation, Commerce, Shaky Markets 
+Portfolios Improvement) and Design Robotics.  
+•Digital Privacy, Medical Services (for Rapid Radiation Treatments, Accurate Diagnoses, and Solid Evidence) and 
+Automotive IndustryBusinesses Applications
+•Pharmaceuticals, Computer Vision, Speedy Computations, Life Sciences, and Climate Prediction.
+•Resilience in Computing Systems, Quantum Algorithms and Networks, Quantum Confidentiality and SecurityAdvancements
+•Confidential Data Processing, Encrypted Data Transmission, Connectivity, Detection of Attacks. 
+•Surveillance, T elecommunications, Networked Quantum T echnology, Safe Credentials.Fundamental Operations
+•Predictive Analytics Anticipating Trends
+•Find Soutions for Complex Problems 
+•Quantum Skills to Diagnose DiseasesGadget Assistances
+Figure 1: Applications and Benefits of Quantum Computing.
+Thereexistseveraldifferentquantumcomputingparadigms.Themostpopularonesaremeasurement-basedorone-
+way quantum computing [26], adiabatic quantum computing (usually implemented in practice as quantum annealing)
+[27], and the quantum circuit framework for gate-based general quantum computing [7]. Since it is possible to re-
+program quantum computers according to particular issues, the quantum circuit model stands out as an especially
+feasibleoption.Currently,somehigh-levelprogramminglanguagesspecifictoquantumcomputing,suchasQiskit[28],
+Cirq [29], PennyLane [30], and other libraries and packages, are available to program quantum computers; however,
+circuitsspecifiedwiththeselanguagesneedtobe“translated”tofittheactualquantumtopology,buildingthequantum
+circuits by organising the necessary quantum gates (these are just “instructions” that are executed in sequence) and
+operations according to a pre-designed architecture.
+1.2ApplicationsandBenefits: Researchonquantumcomputingisblossoming,withregularexcitingnewadvances
+in several areas of application and quantum engineering such as hardware, software, algorithms, error correction on
+NISQ devices. Academic scientists first, but now also industry experts are investigating on problems that may find
+applicationstosolvepracticalproblems.InFig.1,wesummarizesomebenefitsthatquantumcomputingmayhavefor
+common users, programmers, and various business sectors by delegating key tasks.
+1.3 Quantum Computing in a nutshell: A binary bit that may take on values ‘0’ or ‘1’ is the basic unit of
+information of conventional computing. Quantum Computation and Information uses qubits as fundamental unit of
+informationand,differentlyfromclassicalbits,theycannotonlyacquireeithervalue‘0’or‘1’,buteven‘0’and‘1’at
+thesametime.Asimplemathematicalrepresentationofaqubit,inthecomputationalbasis {|0⟩,|1⟩},isconventionally
+given as:
+𝑎|0⟩+𝑏|1⟩, (1)
+where 𝑎and𝑏are complex amplitudes ( 𝑎, 𝑏∈) superimposing the states ‘0’ and ‘1’ [2], and preserving probability
+interpretationofquantumstate,i.e.,theyneedtoverifythecondition |𝑎|2+|𝑏|2= 1.Thesymbol |⟩(ket)indicatesthat
+thebitofinformationisencodedinaquantumstate,exploitingoneofitsphysicaldegreeoffreedom.Usingquantum
+superposition, a vast computational space becomes available allowing to solve problems of extreme complexity
+[INCLUDE A REFERENCE HERE on quanutm computing basics]. Even a very limited number of qubits, 𝑁can
+beusedtosolveproblemsthatareintractablewithclassicalcomputers,thankstotherapidlyexpandingcomputational
+domain as an exponential function ( 2𝑁) of the total number of qubits.
+S S Gill et al.: Preprintversion Page 3 of 15
+Quantum Computing: Vision and Challenges
+Anotherfundamentalquantumpropertyexploitedinquantumalgorithmsis Entanglement [7].Whileclassicalbits
+are independent of each other when setting bit values, qubits allow for the placement of bits in an entangled state.
+When entangled qubits can persist in a correlated global state, even if physically apart. As a result, all qubits in an
+entangledstatecanhavetheircharacteristicschangedevenifonlyoneofthemisprobed.Whenusedfordensecoding
+or quantum simulation of linked networks, entanglement becomes a valuable asset [31].
+Measurement is the last stage of a quantum computation; it collapses the stochastic quantum state into a
+deterministic state. Although quantum algorithms typically guarantee that the correct outcome has the highest
+likelihood,thestochasticnatureoftheprocesscannotguaranteethatthecorrectoutcomeisactuallysampled.Therefore,
+some classicalpost-processing (suchas majority votingor statisticalestimation) or repeatingthe computationseveral
+times is usually needed to produce a final output from the raw results obtained with the quantum computer.
+2. Quantum Algorithms
+A quantum computer is based on the principles of quantum mechanics and uses these principles to its advantage.
+Fromtheiroriginsinquantumphysicsmodelstomanymoderncomputerscienceuses,quantumalgorithmshavecome
+alongway[2].Ahighlycovetedsteptowardsattainingtheprocessingcapacityofitstype,anindustrial-scalequantum
+computer would certainly have ramifications in several domains, including cybersecurity and others. Daniel Simon
+presentedthefirstquantummethodtobeatclassicalalgorithmsintermsofperformance[32].Deutsch-JozsaAlgorithm,
+Bernstein-Vazirani Algorithm, Simon’s Algorithm, and Shor’s Algorithm were introduced to focus on problems that
+require exponential queries (i.e. cutting down on the amount of computing power required to examine algorithms
+and assess their balance or robustness with certainty), efficient solutions of black-box problems, faster computation,
+speedup,andintegerfactorisation,anddiscretelogarithmproblems,respectively[4].Thesealgorithmswerebasedon
+thequantumFouriertransform.Furthermore,Grover’salgorithmandquantumcountingweredevelopedtoconcentrate
+onsearchingunstructureddatabasesformarkedentriesandgeneralisedsearches,respectively.Bothofthesealgorithms
+were created based on amplitude amplification, which is a robust strategy to make quantum computers capable of
+solving challenges quickly and effectively that might be impossible to solve with traditional approaches. Numerous
+quantum algorithms rely on this, such as those for quantum machine learning, quantum simulation, and quantum
+search.Finally,aquantumapproximateoptimisationapproachcenteredonthesolutionofgraphtheoryissueshasbeen
+recentlyproposed[33].Thisapproachisbuiltonahybridquantum/classicalscheme.Fromafoundationalpointofview,
+allsoftware-relatedaspectsarebasedontwodifferentcomputationalmodels,whichdeterminesomedifferencesinthe
+programmingparadigmsaswellasinapplicationsandtechnicalaspects:thequantumgate[34]andquantumannealing
+models [35]. The gate model uses quantum gates to perform operations on qubits. These gates manipulate qubits in a
+manner similar to classical logic gates, with the ability to exploit quantum-related features such as entanglement and
+superposition.Thisisauniversalcomputationalmodelinwhichtheabove-mentionedShor’sandGrover’salgorithms
+can be implemented; hence, the applications based on this model have the widest range. From a technical point of
+view,decoherenceisthemainproblem,anderrorcorrectionisthemostrequiredpractice.Ontheotherhand,quantum
+annealing is an approximate implementation of adiabatic quantum computing, which is itself equivalent to the digital
+model, which seems to be a promising alternative to the gate model for solving large optimisation problems. This
+paradigmisbasedonthenaturaltendencyofquantumsystemstofindlow-energystates.Itreliesonthenaturalquantum
+mechanical process of tunneling and requires maintaining a coherent quantum state over the annealing process. It is
+somewhatlesssensitivetoerrorscomparedtothegatemodelbecauseitexploitsthequantumsystem’snaturaltendency
+to find a low-energy state, making it robust against certain types of computational errors.
+3. Technological Advances and Software Tools
+The invention of quantum software is an emerging yet relatively less developed field compared to quantum
+modelling and quantum technology [36]. Several quantum applications are already accessible from various plat-
+forms/sources, including Google, IBM, Microsoft, and D-Wave. Quantum programming tools have been produced
+at an increasing pace; however, there is a lack of excellent programming tools, similar to conventional programming
+languageslikeC++andJava,andtheseapplicationsarestillratherlow-level,likeassembly-levellanguages.Anumber
+ofimportantareashavebeenidentifiedinrecentresearchpertainingtosoftwareprogramsthatusequantumcomputing,
+includingcodinglanguages,programmers,error-correctionfirmware,physicallevelschedulersandoptimisers,logical
+levelschedulersandoptimisationtechniques,andhardwarecontrolofsoftwareupdates.Mostimportanttopicstostudy
+S S Gill et al.: Preprintversion Page 4 of 15
+Quantum Computing: Vision and Challenges
+in the field are [37, 38, 39]: (i) frameworks, semantics and compilation of programming language; (ii) workflows,
+controlled and adjoint operations & clean and borrowed qubits and (iii) simulators. Integrating quantum algorithms
+with defective equipment effectively is the goal of powerful quantum error-correcting firmware [37]. Located at the
+very bottom of the quantum computing stack, error-correcting quantum firmware aids in lowering the error rate due
+toflawedhardware,aswellastheintricacyandresourceconsumptionofthesystem[38].Itisenvisagedthatsoftware
+managingquantumhardwarewouldhaveoutstandingperformance,beabletousesophisticatedquantummanagement
+techniques,havetop-qualityeffectsatthesystemlevel,beabletoregulateforbothglobalandlocaloptimaloutcomes
+through simulation, and have adequate physical schedules [39]. At this date, notwithstanding the absence of a single
+programming framework/model able to overcome the others, there are different platforms for quantum computer
+programming, often provided and “tied” to the provided hardware solutions. Among the most famous are: Qiskit
+(QuantumInformationScienceKit)—developedbyIBM1;Cirq—developedbyGoogle2;andPyQuil—developed
+byRigettiComputing3.Topushtheirsolutions,quantumdevelopersoftenreleasetheseframeworkswithopen-source
+licenses and with an Application Programming Interface (API) in Python, which is a language that is straightforward
+tolearn.QuantumAnnealingisfollowingthesamepath,withacoupleof“programmingframeworks”—i.e.,D-Wave
+Ocean Software and Leap — both provided by D-Wave. Recently, Fujitsu’s Digital Annealer has been promising to
+bring quantum-inspired technology using traditional computing platforms [40].
+4. Modern Cryptography: From Quantum to Post-Quantum
+The advent of quantum computers heralds a new ground-breaking era within the realm of data integrity and
+cybersecurity. With improving scalable computing power, quantum computers can effortlessly break the security of
+traditionalcryptosystems,relyingonfactorizationanddiscretelogarithms,bothofwhichareconsideredhardproblems
+for classical computers. By constrast, quantum computers have efficient processing capabilities to solve these hard
+problems within polynomial time [41]. For example, an adversary equipped with a quantum computer may break the
+RSA(Rivest-Shamir-Adleman)securityinpolynomialtimebyexploitingShor’salgorithmforfactoringlargenumbers.
+It is clear that such a possibility, despite not yet practical, poses potential threats to the integrity of communication
+networks [42] that need to be analyzed and mitigated. In fact the potential threat represented by the Shor’s algorithm
+hasledtonewdevelopmentsinclassicalcryptographicapproaches,withtheworkonpost-quantumcryptographyand
+onacompletelynewparadigmtograntsecuritynamedquantumcryptography [43],ormorepreciselyQuantum-Key
+Distribution (QKD). The novelty of QKD is that, instead of adding layers of security based on conventional (i.e.
+computationally hard to solve) algorithms, it uses fundamental properties of quantum particles to protect information
+from unauthorized parties. QKD protocols, are themselves composite algorithms where transmission of quantum
+signals,encryption/decryption,signatures,authentication,andhashingareallcombined [44]toachieve(theoretically)
+unconditional security.
+Let’sreviseinsomemoredetailthebasicprincipleofbothquantumcryptographyandpost-quantumcryptography.
+4.1 Quantum Key Distribution: Classical cryptography is endangered by the discovery of the Shor’s algorithm
+because it can efficiently solve computationally hard problems upon which classical key-exchange mechanism are
+based.BycontrastQuantumKeyDistribution(QKD)doesnotmakeuseofcomputationallyhardprimitives,butrelies
+on the fundamental laws of quantum physics to establish security. However, it is worth to notice that QKD protocols
+arealways hybrid,i.e.,theyrelyonbothquantumandclassicalcommunicationstoimplementavirtuallyimpenetrable
+crypto-system, promising to protect the privacy of communication even against attacks conducted by any quantum
+computers, independently from their computational power and evolution.
+QKDcanbeimplementedintwospecificsetups:continuous-variable(CV-QKD)anddiscrete-variable(DV-QKD)
+[43].DV-QKDusesqubitstoencodeinformationandsinglephotondetectorsareemployedbythereceivertomonitor
+andquantifythepresenceofeavesdropperonthecommunicationchannel[45].Insuchawaythepartiescanquantify
+the amount of information eavesdropped. By contrast, CV-QKD encodes classical information randomly modulating
+phaseandamplitudeofbrightcoherentstates,anduseshomodynedetectionschemesatthereceivers,inasimilarsetup
+used today by conventional optical communications [46].
+An essential tenet of QKD (both for DV and CV) is rooted in quantum physics and takes the shape of the no-
+cloningtheorem[47,48],whichassertsthataflawlessreplicaofarbitrary(i.e.non-orthogonal)quantumstatescannot
+1https://www.ibm.com/quantum/qiskit
+2https://quantumai.google/cirq
+3https://github.com/rigetti/pyquil
+S S Gill et al.: Preprintversion Page 5 of 15
+Quantum Computing: Vision and Challenges
+becreated,withoutcorruptingtheprobedquantumstates.Thatisexploitedduringthe quantumcommunicationphase ,
+when quantum particles are sent from the sender to the receiver. In fact, encoding information on non-orthogonal
+quantumstates,makessothatanyefforttogaininsightsonthepropertiesofsuchastreamquantumsignalswouldresults
+intheintroductionofnoise,readilyidentifiedbyeitherthekeydistributorortherecipient(theparties,conventionally
+AliceandBob).Suchamechanismallowsthepartiestoquantifytheamountofinformationpotentiallyeavesdropped
+(Eve) during the quantum communication. That information is crucial, because they can use it to then apply classical
+protocols of error correction and privacy amplification and reducing to a negligible amount the eavesdropper’s
+knowledge on the shared key. This second part of the cryptosystem is usually called classical communication phase.
+Examples of QKD protocols based on the steps described above are BB84, B92 and BM92 [49, 50, 51] that use
+DV-QKD, and CV-QKD protocols like [52, 53, 54].
+Previous QKD protocols suffer from the relative vulnerabilities connected to imperfections and trust-ability of
+devices used in practical implementations. To overcome this difficulty, and potential security threats, an even more
+powerful approach to QKD has been introduced based on entanglement verification, and taking the name of Device-
+Independent(DI)QKD.InthisapproachtheverificationofviolationofBellinequalitiesisusedtoverifythepresence
+of entanglement between the quantum signals shared between the parties. If entanglement is present then the parties
+willbeinthepositiontoshareanunconditionallysecuresequenceofbits,rulingoutanypossibilityforEvetoacquire
+information on the secret-key. The first seminal work using entanglement to implement QKD has been proposed by
+Ekert in his 1991 work [55]. After that many other works followed with refined security proofs [43].
+DI-QKDistheultimateapproachtoestablishunconditionallysecuresecret-keyusingquantummechanicswithout
+havingtospecifythephysicalimplementationofequipmentsorfixingmanypotentialquantumhackingloopholes[56].
+However,DI-QKDisdifficulttoimplementanditsperformance,onapracticalscenario,arestilllimited[43]because
+itrequiresloophole-freeBellinequalityviolations,whichnecessitatehigh-qualityentanglementamongdistantparties
+and near-perfect quantum detection, something current technologies cannot still provide in full [57], or at least not
+under commonly accepted practicality assumptions.
+In recent years also Measurement Device-Independent (MDI) QKD protocols have been proposed to implement
+overcome difficulties connected to the trustability of measurement devices [58, 59, 60], and Twin-field QKD [61] to
+overcomethepoint-to-pointquantumsecret-keycapacity,setbythePLOBbound[62],andrecoverthesingle-repeater
+scaling of end-to-end quantum capacity [63], without the need to implement a full-scale quantum repeater.
+4.2Post-QuantumCryptography: Thesecurityofclassicalcryptographicprimitives(e.g.,RSA,Diffie–Hellman,
+etc.) depends on the hard problems of discrete arithmetic, prime factorization of integers, and elliptic-curve discrete
+logarithms. Sadly, these present-day cryptographic primitives based on such hard problems might theoretically be
+solvableinabriefspanoftimeusingthepossibleapplicationsofquantumcomputers.Thepotentialattacksperformed
+byquantumalgorithmsposedonconventionalcryptographicprotocols,havepromotedasenseofurgencyindesigning
+alternative schemes to mitigate quantum attacks. Such alternatives are generally characterized as post-quantum
+cryptography(PQC).Theseschemescaneffectivelydealwithprevalentchallengestriggeredbyquantumadversaries.
+The threat represented by the potential implementation nof fast quantum algorithm able to break the conventional
+algorithm used in our everyday life lead to an intense research activity on identifying candidates algorithm for the
+implementation and update of communication infrastructure able to resits to attacks performed to know quantum
+algorithms [64].Theprotocolsdevelopedinpost-quantumcryptographyweregenerallygroupedintofivetypes:code-
+based, hash-based, lattice-based, multivariate, and supersingular curve-elliptic isogeny schemes [11].
+NIST post-quantum cryptography standardization process [65] is underway to identify the specific algorithm
+families and protocols to be considered secure under the potential threat of a quantum computer.
+Itisworthtonoticethattheultimatecounter-measurestopreservesecurityandprivacyofcommunicationagainst
+quantumeavesdroppersisquantum-keydistribution(QKD),alsoagainstthepossibilityof “harvestnow,decryptlater”
+approach. In which case attackers store encrypted material until when advances on decryption technology (hardware
+or software) allows to decrypt the stored content. It is clear that in case of extremely sensitive data this may represent
+a threat to security that cannot be neglected, i.e., where data needs to remain confidentially protected for very long
+period of time.
+5. High-Scalability Quantum Computers
+Although quantum technology as a whole began in the 1980s, most scientists didn’t see industrial quantum
+computersasfeasibleuntiltheendofthe1990s[31].Severalcompetitors,includingacademicsandindustrialengineers
+S S Gill et al.: Preprintversion Page 6 of 15
+Quantum Computing: Vision and Challenges
+from throughout the world, have worked individually to construct the components of a robust quantum computer.
+Variouspotentialmaterialsystemsarebeingresearchedtodesignandimplementquantumbitsandgates.Analogand
+digital methods are the two most common ways to physically build a quantum computer. The preservation of qubit
+statesowingtodecoherenceisamajorobstacletothebuildingoferror-freelargequantumcomputers.Thecomplexity
+of quantum circuits needed to tackle real-world issues could be substantial, leading to deleterious cumulative error
+rates, regardless of error rates attained below 1%[66]. For this reason, the correction of quantum errors is currently a
+hot topic of academic interest. On October 23, 2019, Google Quantum AI and NASA announced a demonstration of
+quantum computation that would take a long time on any typical traditional computer [15]. The successful resolution
+of a realistic everyday issue on a quantum computer is anticipated to necessitate much more research, despite the fact
+thatthisstudyaccomplishedanimportantstepforthecurrentbatchofquantumcomputers.Importantly,IBMscientists
+demonstrated that identical computation can be executed far more efficiently on a conventional supercomputer [67].
+5.1Super-fastQuantumMachines: The“quantumsupremacy”ofquantummachinesoverconventionalcomput-
+ers proves that the former can do very computationally intensive jobs on a conventional computer far more quickly.
+In the quantum world, “quantum advantage” is an additional important phrase. A more realistic concept would be
+“quantum advantage”, which deals with solving a practical, real-world issue that cannot be effectively addressed on
+a traditional computer, as opposed to the theoretical “quantum supremacy” that would imply resolving a challenging
+issue on any conventional processor [2]. Quantum superiority has been shown, but finding real-world problems that
+quantum computers can effectively tackle remains unsolved mainly due to the decoherence of quantum bits. Most
+of the current generation of quantum computers is cumbersome and underpowered due to the materials used, which
+must be maintained at superconducting (extremely low) temperatures; yet, the promise of prospective commercial
+quantum computers is undeniable [68]. The current popularity of traditional computers and their meteoric rise in the
+1950s provide the impetus for the possible advantages of industrial quantum computers. Older classical computers
+were cumbersome and required constant cooling, just like modern quantum computers. We may theoretically expect
+strongcommercialquantumsystemstoattain“quantumadvantage”inthenot-too-distantfuture,muchastheArtificial
+Intelligence (AI) concept began to take shape during the initial stages of traditional computing devices, even though
+these machines couldn’t have possibly handled the computations needed for AI [69].
+5.2 Quantum Computers for Business World: The goal of cryptanalysis is to uncover the hidden features of a
+database. To decipher encrypted messages, it is necessary to bypass their cryptographic safeguards [11]. To encrypt
+data transmission with banking as well as additional network nodes, one common method is the RSA algorithm [70].
+Ifamassivelyerror-correctedquantummachinecouldbebuilt,thequantumtechniquethatShorcreatedin1994might
+theoreticallycracktheoperationalRSAencryption.Thishighlightsthenecessityforthedevelopmentofpost-quantum
+algorithmsforencryptionthatareresilientagainstcommercialquantumcomputers.Thesedays,manymajorcompanies
+place a premium on effective search strategies and the ability to effectively filter through massive datasets. When
+compared to conventional algorithms in terms of query complexity, Grover’s optimum quantum algorithm from 1996
+may significantly accelerate search across huge amounts of data [71]. Modern database management systems like
+Oraclearen’trobustenoughtohandleGrover’salgorithmintheactualworld;hence,newsoftwarethatmimicsOracle’s
+functionality in the quantum realm is required [72]. Approximation, rather than precision, is used to solve equations
+in many branches of computer research, including numerical weather forecasting and mathematical chemistry. In a
+weather/climateforecastingmodel,forinstance,theparameterisationapproachesemployedtosimulatesub-grid-level
+phenomena are a direct result of the computing limitations [19]. The propagation of inaccuracies in the system of
+equation solutions brought about by these approximate parameterisations can have an impact on the decision-making
+process. Using commercially available quantum machines, we may be able to solve the equations exactly. In order to
+enhancetheexistingproductionprocess,whichhasasignificantcarbonfootprint,thismightshedlightonhowvarious
+chemicals are used to manufacture fertilisers. Quantum mechanical phenomena, chemical engineering, transpiration,
+superconductors,andmagneticsmayallbeexploitedwiththehelpofcommercialquantummachines[72].Investigation
+at the concept level has begun utilising accessible, comparatively less powerful quantum computers, even though
+a scalable industrial quantum computer has yet to be developed and may require substantial additional research. A
+beryllium hydride molecule was recently simulated on a seven-qubit quantum processor by IBM [17]. In the future, a
+numberofapplicationsareanticipatedtogainpopularity,includingreal-timeconsumerandtransportationmodelling,
+medical diagnosis by rapid database comparison, and power supply and demand balancing. However, the creation
+of commercial quantum computers will inevitably expose several other sectors and applications to risks, including
+communications,vitalinfrastructure,banking,thedistributedledger(blockchain),andcryptocurrencies,amongothers.
+S S Gill et al.: Preprintversion Page 7 of 15
+Quantum Computing: Vision and Challenges
+5.3 Commercial Quantum Computing Infrastructure Specifications: More than a hundred laboratories,
+including those associated with the government and universities, are working together on a global scale to develop,
+build, and monitor qubit systems [68]. Production of commercial quantum machines is now underway at several big
+firms and a plethora of aspiring start-ups. In addition to creating quantum bits and gates, a commercial quantum
+machine would also need complex classical management and wiring, including cooling systems, user interfaces,
+networks, data storage capacities, and electromagnetic fields.
+5.4ScalableCommercialQuantumComputingManufacturingChallenges: Thebiggesttechnicalproblemthat
+needstobesolvedbeforeanindustrial-gradequantummachinecanbefullyfunctionalisnoiseordecoherence,which
+makesquantumprocessingmistakes(destroysentanglementofqubits)andstopsquantumcomputingbenefits.Untila
+stablequbitcanberealised,itsstartingstatemustbeestablished,andgatesandnetworksmustalsobedeveloped.Even
+thoughphotonsmaintaintheircoherentstateforanextendedperiodoftime,itisdifficulttoconstructquantumcircuits
+using them. Companies like IBM, Google, Rigetti, and others are building quantum machines using quantum circuits
+basedonsuperconductivity.Unfortunately,thereisstillaneedtodevelopstrategiesforerrorcorrectionormoderation
+due to the poor fidelity of these qubits, especially in two-qubit operations. If a quantum circuit utilises five or fewer
+qubits,wecanbuildandoperateitonIBM’sfive-qubitcloudprocessor,whichwasmadepubliclyavailablein2016.In
+addition to their newly revealed 433-qubit quantum computer, IBM now provides cloud usage of quantum machines
+with up to 65 qubits.
+5.5PresentlyAccessibleInfrastructure: In2016,IBMunveileditsfive-qubitIBMQuantumExperiencequantum
+computer [73]. Along with the system’s release, a user manual and an interactive chat were made available. Rights to
+engage via quantum assembly language, a user-friendly interface, and a simulation extension were among the many
+features introduced to the IBM Quantum Experience later in 2017 [74]. After that, IBM released Qiskit, a tool that
+enhanced quantum processor coding. In addition, they established the quantum awards program and created a system
+withsixteenqubits.SuperconductingqubitshousedinadilutionrefrigeratorconstitutethehardwareofIBM’squantum
+computers. The quantum composer is the name of the application’s user interface (GUI) that consumers engage with.
+Whenwritingquantumassemblycode,quantumcomposeristhetoolofchoice.Quantumexperimentsandalgorithms
+may be more easily developed with the help of the Graphical User Interface (GUI). One can also choose to use a
+simulatorinsteadofarealQuantumProcessingUnit(QPU).Torunquantumcomputationsthroughtheirpaces,Rigetti
+Computing provides a Forest framework as a cloud-based quantum computing utility. A quantum processor from
+Foresthasover36qubits,anditispossibletoutilizePythontodohybridizedconventionalandquantumcomputations.
+The European cloud computing provider QuTech offers the quantum platform Quantum Inspire as part of its service
+offering.Withoutinvestinginorconstructingaphysicalquantumcomputer,userscanaccesstheprocessingpowerof
+quantum algorithms using cloud-based quantum computing platforms.
+6. Widening the Debate: New Trends and Potential Challenges
+In light of the current study, we have been able to pinpoint a number of topics in quantum computing that are
+still being investigated. Simulating complicated quantum processes has been the focus of much study, and post-
+quantum cryptography is now at its pinnacle. Fig. 2 summarises the main findings and recommendations that can
+be utilised by future researchers to further quantum computing research. In the realm of quantum technology, new
+fields of study are taking shape, including automation, handling energy, computer security, decentralised quantum
+computing, complicated mathematical chemistry and drug design [2]. It could take over a decade for these domains
+to fully implement quantum computing when they are first introduced. People have unrealistically high hopes for
+isothermalquantumcomputing,quantummanagement,andquantumsecurity.Assumingtheyfallwithintheambitof
+quantum computing, their development is anticipated to take short time [75]. There has been an excess of optimism
+around several areas of quantum technology, including the Internet, error-corrected quantum technology, digital
+information exploration, quantum-aided AI, and quantum-based satellite communications [76]. We have uncovered
+severalunansweredquestionsandpotentialavenuesforfurtherstudy,allofwhicharesubjecttoongoinginvestigation
+on a worldwide scale.
+6.1 Technological and Developmental Challenges: The primary problem with quantum technology is its
+vulnerability, which arises from two main sources: 1) the fact that qubits have a very short coherence period (which
+is very qubit technology dependent) since, due to their superconductivity, they lose their data extremely often. 2)
+Developing a quantum computer with minimal errors is challenging since quantum processes are unreliable because
+of the relatively substantial rate of errors needing a huge number of qubits for error handling. Additionally, error
+S S Gill et al.: Preprintversion Page 8 of 15
+Quantum Computing: Vision and Challenges
+ 
+- Statistical Modelling of Climate  
+- Numerical weather predictions  
+- Global Warming and Carbon Neutrality  Quantum 
+Computing  
+Climate 
+Modelling  
+Figure 2: New Trends and Potential Challenges in Quantum Computing.
+correctioninquantumtechnologyisfarmorechallengingthaninconventionalcomputingduetothefollowingreasons:
+(a) quantum errors are ongoing (including the two magnitudes and stages), (b) it is not possible to replicate unknown
+quantum states, and (c) evaluation may degrade a quantum state and erase the information in qubits. A large number
+of physical qubits are needed to execute a quantum algorithm successfully; this necessitates a tight and constant link
+between the classical structure and the quantum device, which in turn creates a massive control burden. Additionally,
+the connection and overhead costs increase the complexity of the run-time control, design, and installation for
+quantumcomputingprocesses.Atthemoment,thequbitcountservesasameasureofquantumcomputingequipment’s
+computational capacity. However, this metric is off by a significant margin, and it raises questions about the viability
+of supercomputer-level quantum machines with over a thousand qubits. Qubit design necessitates an efficient cooling
+component to manage heat, which AI-driven systems may be able to do. This increases scalability and allows for the
+solution of dynamically scaled, tricky issues.
+6.2 Resilient and Sustainable Quantum Modelling: Since the actual application of quantum error mitigation
+remains a matter of wide debate, it is difficult to achieve trustworthy and fault-tolerant quantum computers. The
+sensitive nature of quantum states necessitates operating bits at extremely cold temperatures and requires high
+precision manufacturing [44]. Accurately measuring the full quantum state is similarly difficult, making verification
+a difficult task. When compared to conventional computing, the likelihood of calculation mistakes is much higher.
+Quantum structures cannot function properly without a reliable method of error correction. In order to facilitate
+better verification of exact manufacturing restrictions, further reevaluation of quantum communication infrastructure
+isrequired.However,duetostricttolerancesandtheneedtopreventusingpoorlypositionedqubitstominimiseerror,
+testing qubits after manufacture is a challenging task. To achieve sufficient reliability to enable sustained quantum
+computation, iterative error mitigation is required [36]. To provide trustworthy service in the years to come, state-
+of-the-art AI/ML-based methods may be utilised for automatic error identification and rectification on the fly [77].
+Nonetheless, it results in additional expenses for training AI/ML methods [78].
+S S Gill et al.: Preprintversion Page 9 of 15
+Quantum Computing: Vision and Challenges
+However,improvingthedependabilityofcomputationsdoesnotonlypassthroughmorereliablehardware.Intheir
+seminalwork,Avižienisetal.[79]definesataxonomyofdependablecomputingreportingapplicablecountermeasures
+athardwareandsoftwarelevels.Softwaretechniquestoimprovetraditionalcomputationsandtotoleratehardwarefaults
+are nowadays a common practice in computer engineering. The challenges are to extend such software engineering
+practice to pursue highly dependable quantum programs [80]; on the other hand, correct-by-construction is still a
+valid aim of software engineering, also applied to quantum computing: the application to quantum of model-driven
+engineering,formalmodelling,advancedverificationandvalidationtechniquesareotherfuturechallengestodealwith
+[74].
+6.3 Quantum ML & QAI: The use of principal component analysis, quantifying vectors, classifiers, regression,
+andstochasticmodellingarecommontoolsusedbymachinelearningscientists.Usingquantumcomputerstomanage
+massive datasets with gadgets ranging from 100 to 1000 qubits may increase the effectiveness and scalability of
+AI methods. Additionally, by rapidly creating and evaluating certain statistical distributions, including training in
+conventionalandquantumgenerativealgorithms,quantumcomputersmightpiquethecuriosityofthefieldofmachine
+learning. As a result of the increasing amount of inputs (the number of participants) for quantum recommendation
+algorithms, it is becoming increasingly challenging to complete the task in a timely manner. Millions of qubits are
+requiredtodealwithbigdatasetsandpresentdemand.Bysupplyingcomputationalpowerandothermachinelearning
+tasks,hybridquantum-classicalalgorithmscanovercomethischallenge[72].Limitedqubitconnectionandincreased
+decoherence in the qubits caused by the device’s intrinsic noise are two additional important problems. The use of
+sophisticated AI/ML can improve scalability and provide additional processing capacity to manage massive amounts
+of data produced by different Internet of Things (IoT) gadgets [81].
+6.4 Power Control and Management: Modern supercomputers and cloud servers need a great deal of electrical
+power to tackle various issues, making managing energy a major difficulty. When performing a specific activity,
+quantum computers are anticipated to use less energy compared in comparison. However, a quantum computer could
+consistently do massive computations with less power, cutting costs and reducing greenhouse gases even more. It
+can find the best answer with the least amount of energy because its qubits can represent both zeros and ones
+simultaneously for superposition (though entanglement or interference is also needed for computation), in contrast to
+classical computers’ usage of binary bits (0 or 1). Quantum processors use less power since they operate at a shallow
+temperature,andbecausetheyaresuperconductingandhavenoresistance,theydon’tgenerateanyheat[72].Thetwo
+halvesofanintegratedapplicationaretheextremelyenergeticandlow-energycomponents.Classicalcomputinguses
+thecloudtoexecutethelow-energypart,whereasquantumcomputinghandlesthehigh-energyportion[72].Therefore,
+hybridcomputing,whichcombinesquantumandconventionalcomputing,canaddressthesetypesofchallengessince
+itsignificantlyreducesenergyconsumptionandexpenses.Toaddressthemostdifficultbusinessissuesofthepresent,
+furtherresearchisrequiredpriortousinghybridcomputing.UtilisingAI,quantumcomputersarecapableofimproving
+processing speed, dependability, and confidentiality [77]. However, this comes at a cost—a tremendous quantity of
+energy is required to power them and manage their temperature with cooling devices. Renewable energy sources, in
+conjunctionwithbrownpower,willbeabletoprovidetheenergyneedsforsuchquantumcomputersinthedecadesto
+come.
+6.5 Quantum Web/Internet: The advent of the quantum Internet has greatly improved computing power and
+opened the door for novel forms of communication, paving the way for decentralised quantum computing. The usage
+of quantum mechanics principles introduces a number of difficulties in the development of the quantum Internet, the
+mostsignificantofwhicharetheprohibitionsonreplication,quantummeasurement,teleportation,andentanglement.
+Abasicpremiseofconventionalcomputing—theerror-controlmechanism—isnowcompletelyirrelevantinthecontext
+ofquantumcomputing.InordertobuildthequantumInternet,aradicalchangefromthecurrentclassicalapproachto
+networkingdesignisrequired[44].Furthermore,decoherenceresultsfromqubitinteractionswiththeirenvironments
+due to the fragility of qubits and the gradual loss of qubit-to-environment information [82]. Quantum computing has
+additional difficulties with efficient data transformation due to long-distance entanglement dispersion. It will be more
+difficult in the eventual quantum Internet to save the specifics of processes executed, which is a major drawback of
+current quantum computing systems that rely on massive amounts of storage for processing and connectivity.
+6.6TheRoboticsViewofQuantum: RobotsemployGraphicsProcessingUnits(GPUs)totacklecomputationally
+heavyproblemsinindustrieslikepharmaceuticals,logistics,encryption,andbanking,wherebytheadditionofquantum
+computing may significantly accelerate computations. Robots powered by quantum technology may also use cloud-
+based quantum computing resources to address a variety of problems [72]. Modern industrial robots with improved
+sensingcapabilities,madepossiblebyquantumcomputing,maydetectmanyjetengineproblemssimultaneously[68].
+S S Gill et al.: Preprintversion Page 10 of 15
+Quantum Computing: Vision and Challenges
+Inaddition,bymakinguseoftwoessentialaspectsofquantumcomputing—parallelismandentanglement—quantum
+image processing aids in the optimal understanding of visual knowledge as well as the efficient preservation and
+management of image data. Robots powered by AI are solving a wide range of issues by mining graphs for hidden
+insights,butthecomplexitygrowsexponentiallyasdatasetsgetlarger.Byutilisingquantumrandomwalksratherthan
+graphsearch,quantumcomputingisabletodecreaseperformance.Inaddition,quantumneuralnetworksmayimprove
+machine activities and detect instances of joint friction and motion, two additional major kinematics concerns. This
+meanstheycanhandlemechanicalandroboticmovementsaswell.Inaddition,thereisanotherdifficultchallengethat
+maybetackledusingquantumalgorithms:determiningwhythereisadiscrepancybetweenthepredictedandobserved
+behaviours. The potential applications of quantum-reinforced learning might optimise robotic machine motion by
+addressing issues like joint friction and instances of inertia.
+6.7 Simulations for Advanced Quantum Research: In the near future, small-scale "quantum simulators" with
+50–100qubitsofcomputingpowermaybeaccessible,allowingquantumcomputerstomodelcomplicatedbiological,
+physical, and chemical issues [72]. To comprehend and utilise quantum technology, it is necessary to combine the
+knowledge of several experts with the essentials of conventional computing [69]. In addition, quantum simulators
+can mimic the natural system and solve complicated issues in a controlled environment, allowing researchers to
+study the interplay of several parameters—questions that would be impossible to accomplish using conventional
+or supercomputer systems. When developing quantum computers, simulators can make use of entanglement and
+superposition,twooftheirkeyfeatures[74].Toconductlarge-sizedandcomplicatedoperationsconnectedtobiology
+and chemistry with optimum outcomes, the scalability of simulations needs to be increased in the future.
+6.8 Modern Cryptography: Cryptography is essential for the safety of Internet communication, embedded
+medical equipment, and services. However, once big quantum computers are available, they will compromise the
+several commonly employed cryptosystems. Cryptographic algorithms, often known as public-key algorithms, are
+referred to as post-quantum cryptography. With post-quantum cryptography, it is presumed that the assailant used
+a massive quantum computer to launch the assault, and these systems adapt to remain safe in this scenario [11].
+Authenticityandsecrecymustbepreservedinpost-quantumcryptographyinordertothwartvariousassaults.Generally
+speaking, six methods—symmetric key quantum resistance, code-based, hash-based, multifaceted, and lattice-based
+encryption—are the primary focus of post-quantum cryptography investigation. Finding the correct places to include
+agility is a different issue within post-quantum cryptography. So, it’s important to design ulterior systems with the
+ability to anticipate potential security issues. In addition, new automated techniques for fault detection and adaptive
+fixation during runtime are required for the validation and testing of designs [5]. A further unresolved issue is the
+necessity to integrate agility into old programs in order to reconfigure existing equipment with security protocols.
+Research in the future should focus on developing code-based systems that are more secure and produce results with
+lesslatency.Asaresult,researchintotherelativemeritsoflatency,security,anddatathroughputisessential.Ourgoal
+istoachievehighprocessingandcommunicationspeedswhilemaintainingsecurity.Therehastobetheformalisation
+of several standards in order to accommodate the shift to post-quantum cryptography in applications that operate in
+real-time. Understanding post-quantum method options is necessary for coordination with vital infrastructure, rescue
+services, mobile Internet financial services, and distance learning. Additionally, various methods can be chosen to
+hasten the transfer.
+6.9 Statistical Modelling of Future Climate: Improvements in computerised weather forecasting abilities
+occurred in the 1950s concurrently with the introduction of classical computers. Forecasts for the climate have come
+a long way in the years since, though. Though advancements in software and hardware have accelerated this trend,
+the use of bits, or 0s and 1s, as the building blocks of conventional computers has stymied progress. Highly powerful
+computers are constructed by stacking conventional computers to handle the massive amounts of computation that
+are needed. Every day, these supercomputers crunch numbers to predict what the planet’s atmosphere, seas, and land
+willdo.Forpracticalusesinsociety,suchasfloodprojections,metropolitanmodelling,undergroundflowmodelling,
+and related complicated tasks, today’s advanced forecasts require significant improvements [19]. The current state of
+computing power has impeded these advancements. The future global computer systems might be able to operate at
+significantlygreatertemporalandspatialdetailifcommercialquantumcomputersbecomefeasible.Numericalweather
+forecasts using quantum computers require careful investigation. Since conventional computers’ constraints generate
+inaccurate, high-resolution forecasts, numerical weather forecasting can benefit from quantum computing. With the
+processingcapabilityoftraditionalcomputersbeingaconstraint,thescientificobjectiveistosolvecomplicatedpartial
+differential equations on the three-dimensional in natural spherical air and sea.
+S S Gill et al.: Preprintversion Page 11 of 15
+Quantum Computing: Vision and Challenges
+6.10 Quantum Cloud Computing: With the eventual widespread availability of robust quantum computers,
+unconditionally secured quantum cloud computing has the potential to play a significant role in a range of practical
+applications [4]. It could become considerably easier for the customer’s work if there were a few strong quantum-
+computer nodes in the cloud. In order to transmit their work and related qubits, clients would have to interact with
+quantum servers using a quantum connection. There have been attempts to prove blind quantum computing through
+experimentation, in which quantum servers are unaware of the inputs, delegations, calculations, or outputs [20]. The
+ubiquitousandpotentquantumclustershavestymiedtheseadvancements.Methodsforerror-freequantumencryption,
+digital encryption basic concepts, and key distribution in a quantum cloud computing setting, as well as quantum
+approaches for gaining control in the cloud, are all covered in the following works: cryptographic verification of
+quantumcomputing,fault-tolerantsecurequantumcomputations.Finally,inordertoimplementwidespreadquantum
+computing on a massive scale, research into a safe and effective quantum cloud computing platform is essential.
+Additionally, the quantum computing industry will benefit from using clouds as a means of storing, processing, and
+disseminating information [74]. To overcome issues with network speed and latency that arise during the running of
+tiny activities in these systems, fog/edge computing is a viable solution [78]. The concept of blockchain may also be
+applied to the provision of reliable and safe services [31].
+7. Summary of Findings, Take-Aways and Conclusions
+There are several unanswered questions and some good ideas for where to go from here. To date, it has been
+unclear how to combine these performance features into a single quantum computing approach. In order to construct
+a quantum computer capable of concurrent activities, a quantum computing approach that enables quantum I/O to
+havealltherequiredclassifiedpropertiesisimportant.Apost-quantumcryptographysystemisdevelopedtosafeguard
+conventional cryptographic basics and protocols by using the computational power of a quantum computer, which
+can solve mathematical issues in milliseconds. In order to make symmetrical cryptography basics and algorithms
+more resistant to the widely-known quantum assaults, post-quantum cryptography was developed. Additionally, the
+difficulties in scaling up the number of qubits that have been actually realised thus far mean that modern commercial
+quantum computers have yet to be capable of replacing conventional supercomputers. It is uncertain when that may
+occur.Thereiscurrentlynoclearindicationofwhenquantumcomputerswillbegintosupplantconventionalcomputers
+in difficult tasks, despite the fact that the next decade will be absolutely thrilling for industrial quantum computing.
+Even if quantum computing does become feasible, digital supercomputers will continue to exist as a complement to
+potential quantum computers. The question of how to effectively operate an algorithm with quantum properties is a
+critical one for designers. There is significant control overhead due to the high number of physical qubits that are
+necessary, which in turn require constant and tight communication between the classical substrate and the quantum
+device. Due to the ongoing issue of the correction of quantum errors, it is difficult to accomplish trustworthy and
+resilient quantum calculations. The sensitive nature of quantum states necessitates operating bits at extremely cold
+temperatures and precise manufacture. Additionally, using quantum computing to manage a massive dataset with an
+extensive number of gadgets (100–1000 qubits) might enhance the effectiveness and scalability of AI methods. To
+realisticallyapplyhybridcomputing(quantumandconventionalcomputing)andtackletoday’smostdifficultbusiness
+challenges,furthereffortisrequired.Theadventofquantumcomputingwillhavefar-reachingbenefitsformanyother
+areas, including computer security, biology, economics, and the production of new substances.
+Finally,thisarticleoffersavisionandidentifiesvariouspotentialchallengesonthetopicofquantumcomputing.It
+hasbeenfoundthatentanglementandsuperposition,twoquantummechanicsinstances,areanticipatedtobecrucialfor
+resolvingcomputerissues.Wediscussedanumberofquantumsoftwaremethodsandtechnologies,industrialquantum
+computers,andcryptographyafterquantumcomputers.Finally,wehighlightanumberofconcernsthathaveyettobe
+solved, as well as promising new prospects for research and development in the field of quantum technology.
+Acknowledgements
+Ji Liu acknowledges support from the DOE-SC Office of Advanced Scientific Computing Research AIDE-QC
+project under contract number DE-AC02-06CH11357.
+References
+[1] T. Hey, “Richard Feynman and computation,” Contemporary Physics , vol. 40, no. 4, pp. 257–265, 1999.
+S S Gill et al.: Preprintversion Page 12 of 15
+Quantum Computing: Vision and Challenges
+[2] J. Preskill, “Quantum computing 40 years later,” in Feynman Lectures on Computation , pp. 193–244, CRC Press, 2023.
+[3] V.Silva,“RichardFeynman,demigodofphysics,fatherofthequantumcomputer,”in QuantumComputingbyPractice:PythonProgramming
+in the Cloud with Qiskit and IBM-Q , pp. 49–85, Springer, 2023.
+[4] Z.Yang,M.Zolanvari,andR.Jain,“Asurveyofimportantissuesinquantumcomputingandcommunications,” IEEECommunicationsSurveys
+& Tutorials , 2023.
+[5] M. Mikkelsen, J. Berezovsky, N. Stoltz, L. Coldren, and D. Awschalom, “Optically detected coherent spin dynamics of a single electron in a
+quantum dot,” Nature Physics , vol. 3, no. 11, pp. 770–773, 2007.
+[6] S. S. Gill, H. Wu, P. Patros, C. Ottaviani, P. Arora, V. C. Pujol, D. Haunschild, A. K. Parlikad, O. Cetinkaya, H. Lutfiyya, et al., “Modern
+computing: Vision and challenges,” Telematics and Informatics Reports , vol. 13, pp. 1–38, 2024.
+[7] M. A. Nielsen and I. L. Chuang, Quantum computation and quantum information . Cambridge university press, 2010.
+[8] S. Nadj-Perge, S. Frolov, E. Bakkers, and L. P. Kouwenhoven, “Spin–orbit qubit in a semiconductor nanowire,” Nature, vol. 468, no. 7327,
+pp. 1084–1087, 2010.
+[9] N.Hendrickx,W.Lawrie,L.Petit,A.Sammak,G.Scappucci,andM.Veldhorst,“Asingle-holespinqubit,” Naturecommunications ,vol.11,
+no. 1, p. 3478, 2020.
+[10] A. Vourdas, “Quantum systems with finite Hilbert space,” Reports on Progress in Physics , vol. 67, no. 3, p. 267, 2004.
+[11] A. Kumar et al., “Securing the future internet of things with post-quantum cryptography,” Security and Privacy , vol. 5, no. 2, p. e200, 2022.
+[12] J. Preskill, “Quantum computing in the nisq era and beyond,” Quantum, vol. 2, p. 79, 2018.
+[13] J. Howard, A. Lidiak, C. Jameson, B. Basyildiz, K. Clark, T. Zhao, M. Bal, J. Long, D. P. Pappas, M. Singh, et al., “Implementing two-qubit
+gates at the quantum speed limit,” Physical Review Research , vol. 5, no. 4, p. 043194, 2023.
+[14] M.AbuGhanemandH.Eleuch,“Two-qubitentanglinggatesforsuperconductingquantumcomputers,” ResultsinPhysics ,vol.56,p.107236,
+2024.
+[15] F. Arute, K. Arya, R. Babbush, D. Bacon, J. C. Bardin, R. Barends, R. Biswas, S. Boixo, F. G. Brandao, D. A. Buell, et al., “Quantum
+supremacy using a programmable superconducting processor,” Nature, vol. 574, no. 7779, pp. 505–510, 2019.
+[16] A. Peruzzo, J. McClean, P. Shadbolt, M.-H. Yung, X.-Q. Zhou, P. J. Love, A. Aspuru-Guzik, and J. L. O’brien, “A variational eigenvalue
+solver on a photonic quantum processor,” Nature communications , vol. 5, no. 1, p. 4213, 2014.
+[17] A. Kandala, A. Mezzacapo, K. Temme, M. Takita, M. Brink, J. M. Chow, and J. M. Gambetta, “Hardware-efficient variational quantum
+eigensolver for small molecules and quantum magnets,” nature, vol. 549, no. 7671, pp. 242–246, 2017.
+[18] M. Cerezo, A. Arrasmith, R. Babbush, S. C. Benjamin, S. Endo, K. Fujii, J. R. McClean, K. Mitarai, X. Yuan, L. Cincio, et al., “Variational
+quantum algorithms,” Nature Reviews Physics , vol. 3, no. 9, pp. 625–644, 2021.
+[19] M.Singh etal.,“Quantumartificialintelligenceforthescienceofclimatechange,”in ArtificialIntelligence,MachineLearningandBlockchain
+in Quantum Satellite, Drone and Network , pp. 199–207, CRC Press, 2022.
+[20] A. D. Córcoles, A. Kandala, A. Javadi-Abhari, D. T. McClure, A. W. Cross, K. Temme, P. D. Nation, M. Steffen, and J. M. Gambetta,
+“Challenges and opportunities of near-term quantum computing systems,” Proceedings of the IEEE , vol. 108, no. 8, pp. 1338–1352, 2019.
+[21] M.Krenn,J.Landgraf,T.Foesel,andF.Marquardt,“Artificialintelligenceandmachinelearningforquantumtechnologies,” PhysicalReview
+A, vol. 107, no. 1, p. 010101, 2023.
+[22] J.Biamonte,P.Wittek,N.Pancotti,P.Rebentrost,N.Wiebe,andS.Lloyd,“Quantummachinelearning,” Nature,vol.549,no.7671,pp.195–
+202, 2017.
+[23] M. Mafu and M. Senekane, “Design and implementation of efficient quantum support vector machine,” in 2021 International Conference on
+Electrical, Computer and Energy Technologies (ICECET) , pp. 1–4, IEEE, 2021.
+[24] P. Rebentrost, M. Mohseni, and S. Lloyd, “Quantum support vector machine for big data classification,” Physical review letters , vol. 113,
+no. 13, p. 130503, 2014.
+[25] C. Ding, T.-Y. Bao, and H.-L. Huang, “Quantum-inspired support vector machine,” IEEE Transactions on Neural Networks and Learning
+Systems, vol. 33, no. 12, pp. 7210–7222, 2021.
+[26] D. Browne and H. Briegel, “One-way quantum computation,” Quantum information: From foundations to quantum technology applications ,
+pp. 449–473, 2016.
+[27] T. Albash and D. A. Lidar, “Adiabatic quantum computation,” Reviews of Modern Physics , vol. 90, no. 1, p. 015002, 2018.
+[28] A.Cross,“Theibmqexperienceandqiskitopen-sourcequantumcomputingsoftware,”in APSMarchmeetingabstracts ,vol.2018,pp.L58–
+003, 2018.
+[29] B.Heim,M.Soeken,S.Marshall,C.Granade,M.Roetteler,A.Geller,M.Troyer,andK.Svore,“Quantumprogramminglanguages,” Nature
+Reviews Physics , vol. 2, no. 12, pp. 709–722, 2020.
+[30] V. Bergholm, J. Izaac, M. Schuld, C. Gogolin, S. Ahmed, V. Ajith, M. S. Alam, G. Alonso-Linaje, B. AkashNarayanan, A. Asadi, et al.,
+“Pennylane: Automatic differentiation of hybrid quantum-classical computations,” arXiv preprint arXiv:1811.04968 , 2018.
+[31] S.S.Gill,“Quantumandblockchainbasedserverlessedgecomputing:Avision,model,newtrendsandfuturedirections,” InternetTechnology
+Letters, p. e275, 2021.
+[32] D. R. Simon, “On the power of quantum computation,” SIAM journal on computing , vol. 26, no. 5, pp. 1474–1483, 1997.
+[33] E. Farhi, J. Goldstone, and S. Gutmann, “A quantum approximate optimization algorithm,” arXiv preprint arXiv:1411.4028 , 2014.
+[34] C. P. Williams, Quantum Gates , pp. 51–122. London: Springer London, 2011.
+[35] W.Du,B.Li,andY.Tian,“Quantumannealingalgorithms:Stateoftheart,” JisuanjiYanjiuyuFazhan/ComputerResearchandDevelopment ,
+vol. 45, no. 9, p. 1501 – 1508, 2008.
+[36] M.DeStefano,F.Pecorelli,D.DiNucci,F.Palomba,andA.DeLucia,“Softwareengineeringforquantumprogramming:Howfararewe?,”
+Journal of Systems and Software , vol. 190, p. 111326, 2022.
+[37] M. A. Serrano, J. A. Cruz-Lemus, R. Perez-Castillo, and M. Piattini, “Quantum software components and platforms: Overview and quality
+assessment,” ACM Computing Surveys , vol. 55, no. 8, pp. 1–31, 2022.
+S S Gill et al.: Preprintversion Page 13 of 15
+Quantum Computing: Vision and Challenges
+[38] R. Pérez-Castillo, M. A. Serrano, and M. Piattini, “Software modernization to embrace quantum technology,” Advances in Engineering
+Software, vol. 151, p. 102933, 2021.
+[39] D. Vietz, J. Barzen, F. Leymann, and K. Wild, “On decision support for quantum application developers: categorization, comparison, and
+analysis of existing technologies,” in International Conference on Computational Science , pp. 127–141, Springer, 2021.
+[40] M. Aramon, G. Rosenberg, E. Valiante, T. Miyazawa, H. Tamura, and H. G. Katzgraber, “Physics-inspired optimization for quadratic
+unconstrained problems using a digital annealer,” Frontiers in Physics , vol. 7, no. APR, 2019.
+[41] A.Singh,K.Dev,H.Siljak,H.D.Joshi,andM.Magarini,“Quantuminternet—applications,functionalities,enablingtechnologies,challenges,
+and research directions,” IEEE Communications Surveys & Tutorials , vol. 23, no. 4, pp. 2218–2247, 2021.
+[42] P.W.Shor,“Polynomial-timealgorithmsforprimefactorizationanddiscretelogarithmsonaquantumcomputer,” SIAMreview ,vol.41,no.2,
+pp. 303–332, 1999.
+[43] S. Pirandola, L. Andersen, U., L. Banchi, M. Berta, D. Bunandar, R. Colbeck, D. Englund, T. Gehring, C. Lupo, C. Ottaviani, J. L. Pereira,
+M. Razavi, J. Shamsul Shaari, M. Tomamichel, V. C. Usenko, G. Vallone, P. Villoresi, and W. P., “Advances in quantum cryptography,”
+Advances in Optics and Photonics , vol. 12, no. 4, pp. 1012–1236, 2020.
+[44] S. Pirandola and S. L. Braunstein, “Physics: Unite to build a quantum internet,” Nature, vol. 532, no. 7598, pp. 169–171, 2016.
+[45] G. Zhang, J. Y. Haw, H. Cai, F. Xu, S. Assad, J. F. Fitzsimons, X. Zhou, Y. Zhang, S. Yu, J. Wu, et al., “An integrated silicon photonic chip
+platform for continuous-variable quantum key distribution,” Nature Photonics , vol. 13, no. 12, pp. 839–842, 2019.
+[46] T. Matsuura, K. Maeda, T. Sasaki, and M. Koashi, “Finite-size security of continuous-variable quantum key distribution with digital signal
+processing,” Nature communications , vol. 12, no. 1, p. 252, 2021.
+[47] P. James, “The concept of transition in quantum mechanics,” Foundations of Physics , vol. 1, no. 1, pp. 23–33, 1970.
+[48] W. K. Wootters and W. H. Zurek, “A single quantum cannot be cloned,” Nature, vol. 299, no. 5886, p. 802–803, 1982.
+[49] C. H. Bennett and G. Brassard, “Quantum cryptography: Public key distribution and coin tossing,” Proceedings of IEEE International
+Conference on Computers, Systems and Signal Processing , vol. 175, p. 8, 1984.
+[50] C. H. Bennett, “Quantum cryptography using any two nonorthogonal states,” Physical review letters , vol. 68, pp. 3121–3124, May 1992.
+[51] C.H.Bennett,G.Brassard,andN.D.Mermin,“Quantumcryptographywithoutbell’stheorem,” Physicalreviewletters ,vol.68,pp.557–559,
+Feb 1992.
+[52] F.GrosshansandP.Grangier,“Continuousvariablequantumcryptographyusingcoherentstates,” Physicalreviewletters ,vol.88,p.057902,
+Jan 2002.
+[53] S. Pirandola, S. Mancini, S. Lloyd, and S. L. Braunstein, “Continuous-variable quantum cryptography using two-way quantum communica-
+tion,”Nature Physics , vol. 4, pp. 726–730, 9 2006.
+[54] C.OttavianiandS.Pirandola,“Generalimmunityandsuperadditivityoftwo-waygaussianquantumcryptography,” ScientificReports ,vol.6,
+p. 22225, 2016.
+[55] A. K. Ekert, “Quantum cryptography based on bell’s theorem,” Physical review letters , vol. 67, pp. 661–663, 1991.
+[56] W. Zhang, T. van Leent, K. Redeker, R. Garthoff, R. Schwonnek, F. Fertig, S. Eppelt, W. Rosenfeld, V. Scarani, C. C.-W. Lim, et al., “A
+device-independent quantum key distribution system for distant users,” Nature, vol. 607, no. 7920, pp. 687–691, 2022.
+[57] V.Zapatero,T.vanLeent,R.Arnon-Friedman,W.-Z.Liu,Q.Zhang,H.Weinfurter,andM.Curty,“Advancesindevice-independentquantum
+key distribution,” npj quantum information , vol. 9, no. 1, p. 10, 2023.
+[58] S. L. Braunstein and S. Pirandola, “Side-channel-free quantum key distribution,” Physical review letters , vol. 108, p. 130502, 2012.
+[59] H.-K. Lo, M. Curty, and B. Qi, “Measurement-device-independent quantum key distribution,” Physical review letters , vol. 108, p. 130503,
+2012.
+[60] S.Pirandola,C.Ottaviani,G.Spedalieri,C.Weedbrook,S.L.Braunstein,S.Lloyd,T.Gehring,C.S.Jacobsen,andU.L.Andersen,“High-rate
+quantum cryptography in untrusted networks,” Nature Photonics , vol. 9, p. 397–402, 2015.
+[61] M.Lucamarini,Z.L.Yuan,J.F.Dynes,andA.J.Shields,“Overcomingtherate-distancelimitofquantumkeydistributionwithoutquantum
+repeaters,” Nature, vol. 557, pp. 400–403, 2018.
+[62] S. Pirandola, R. Laurenza, C. Ottaviani, and L. Banchi, “Fundamental limits of repeaterless quantum communications,” Nature communica-
+tions, vol. 8, p. 15043, 2017.
+[63] S. Pirandola, “End-to-end capacities of a quantum communication network,” Communications Physics , vol. 2, p. 51, 2019.
+[64] D. J. Bernstein and T. Lange, “Post-quantum cryptography,” Nature, vol. 549, no. 7671, pp. 188–194, 2017.
+[65] NIST,“Nistpost-quantumcryprographystandardisation,”2024. https://csrc.nist.gov/Projects/post-quantum-cryptography/
+round-4-submissions .
+[66] M.D.Reed,L.DiCarlo,S.E.Nigg,L.Sun,L.Frunzio,S.M.Girvin,andR.J.Schoelkopf,“Realizationofthree-qubitquantumerrorcorrection
+with superconducting circuits,” Nature, vol. 482, no. 7385, pp. 382–385, 2012.
+[67] E. Pednault, J. A. Gunnels, G. Nannicini, L. Horesh, and R. Wisnieff, “Leveraging secondary storage to simulate deep 54-qubit sycamore
+circuits,” arXiv preprint arXiv:1910.09534 , 2019.
+[68] N. P. De Leon, K. M. Itoh, D. Kim, K. K. Mehta, T. E. Northup, H. Paik, B. Palmer, N. Samarth, S. Sangtawesin, and D. W. Steuerman,
+“Materials challenges and opportunities for quantum computing hardware,” Science, vol. 372, no. 6539, p. eabb2823, 2021.
+[69] A. J. Daley, I. Bloch, C. Kokail, S. Flannigan, N. Pearson, M. Troyer, and P. Zoller, “Practical quantum advantage in quantum simulation,”
+Nature, vol. 607, no. 7920, pp. 667–676, 2022.
+[70] S. Biswas and P. Das, “Analysis of quantum cryptology and the RSA algorithms defense against attacks using shor’s algorithm in a post
+quantum environment,” in International Conference on Computational Intelligence in Communications and Business Analytics , pp. 72–87,
+Springer, 2023.
+[71] L. K. Grover, “A fast quantum mechanical algorithm for database search,” in Proceedings of the twenty-eighth annual ACM symposium on
+Theory of computing , pp. 212–219, 1996.
+S S Gill et al.: Preprintversion Page 14 of 15
+Quantum Computing: Vision and Challenges
+[72] S. S. Gill, A. Kumar, H. Singh, M. Singh, K. Kaur, M. Usman, and R. Buyya, “Quantum computing: A taxonomy, systematic review and
+future directions,” Software: Practice and Experience , vol. 52, no. 1, pp. 66–114, 2022.
+[73] M. Sisodia, “Comparison the performance of five-qubit IBM quantum computers in terms of bell states preparation,” Quantum Information
+Processing , vol. 19, no. 8, p. 215, 2020.
+[74] M. Piattini, M. Serrano, R. Perez-Castillo, G. Petersen, and J. L. Hevia, “Toward a quantum software engineering,” IT Professional , vol. 23,
+no. 1, pp. 62–66, 2021.
+[75] A. Kumar et al.,Quantum and Blockchain for Modern Computing Systems: Vision and Advancements . Springer, 2022.
+[76] T.Subramanian etal.,ArtificialIntelligence,MachineLearningandBlockchaininQuantumSatellite,DroneandNetwork . CRCPress,2022.
+[77] S. S. Gill, M. Xu, C. Ottaviani, P. Patros, R. Bahsoon, A. Shaghaghi, M. Golec, V. Stankovski, H. Wu, A. Abraham, et al., “Ai for next
+generation computing: Emerging trends and future directions,” Internet of Things , vol. 19, p. 100514, 2022.
+[78] G. K. Walia et al., “AI-empowered fog/edge resource management for iot applications: A comprehensive review, research challenges and
+future perspectives,” IEEE Communications Surveys & Tutorials , 2023.
+[79] A. Avižienis, J.-C. Laprie, B. Randell, and C. Landwehr, “Basic concepts and taxonomy of dependable and secure computing,” IEEE
+Transactions on Dependable and Secure Computing , vol. 1, no. 1, p. 11 – 33, 2004.
+[80] A. Paler and S. J. Devitt, “An introduction into fault-tolerant quantum computing,” in 2015 52nd ACM/EDAC/IEEE Design Automation
+Conference (DAC) , pp. 1–6, 2015.
+[81] R. Singh et al., “Edge AI: a survey,” Internet of Things and Cyber-Physical Systems , vol. 3, pp. 71–92, 2023.
+[82] S. Wehner, D. Elkouss, and R. Hanson, “Quantum internet: A vision for the road ahead,” Science, vol. 362, no. 6412, p. eaam9288, 2018.
+S S Gill et al.: Preprintversion Page 15 of 15
