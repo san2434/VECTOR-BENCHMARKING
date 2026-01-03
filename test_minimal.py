@@ -207,38 +207,88 @@ def main():
         with open(gt_path, "r") as f:
             gt_data = json.load(f)
         
-        # Test first 2 questions
-        for qa in gt_data["questions"][:2]:
-            question = qa["text"]  # JSON uses "text" not "question"
+        import chromadb
+        from openai import OpenAI
+        
+        client = chromadb.PersistentClient(path="./data/chromadb_test")
+        collection = client.get_collection("test_collection")
+        openai_client = OpenAI()
+        
+        results_summary = []
+        total_search_time = 0
+        
+        # Test ALL questions
+        for i, qa in enumerate(gt_data["questions"]):
+            question = qa["text"]
             expected = qa["answer"]
+            q_id = qa["id"]
             
-            print(f"\nQuestion: {question}")
-            print(f"Expected: {expected[:100]}...")
+            print(f"\n{'─'*60}")
+            print(f"[{q_id}] {question}")
+            print(f"{'─'*60}")
             
-            # Get relevant chunks (simple search)
-            import chromadb
-            client = chromadb.PersistentClient(path="./data/chromadb_test")
-            collection = client.get_collection("test_collection")
-            
-            from openai import OpenAI
-            openai_client = OpenAI()
+            # Embed query
             query_response = openai_client.embeddings.create(
                 model="text-embedding-3-small",
                 input=[question]
             )
             query_embedding = query_response.data[0].embedding
             
-            results = collection.query(
+            # Search
+            search_start = time.time()
+            search_results = collection.query(
                 query_embeddings=[query_embedding],
-                n_results=3
+                n_results=5
             )
+            search_time = (time.time() - search_start) * 1000
+            total_search_time += search_time
             
-            # Generate answer
-            answer = test_rag_answer(question, results["documents"][0])
+            print(f"Search time: {search_time:.2f}ms")
+            print(f"Top 3 chunks retrieved:")
+            for j in range(min(3, len(search_results["ids"][0]))):
+                chunk_id = search_results["ids"][0][j]
+                dist = search_results["distances"][0][j]
+                text_preview = search_results["documents"][0][j][:60]
+                print(f"  {j+1}. [{chunk_id}] (dist={dist:.4f}): {text_preview}...")
+            
+            # Generate RAG answer
+            answer = test_rag_answer(question, search_results["documents"][0])
+            
+            print(f"\nExpected: {expected[:150]}{'...' if len(expected) > 150 else ''}")
             print(f"RAG Answer: {answer}")
+            
+            # Simple keyword overlap score
+            expected_words = set(expected.lower().split())
+            answer_words = set(answer.lower().split())
+            overlap = len(expected_words & answer_words)
+            precision = overlap / len(answer_words) if answer_words else 0
+            recall = overlap / len(expected_words) if expected_words else 0
+            f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
+            
+            results_summary.append({
+                "id": q_id,
+                "search_time_ms": search_time,
+                "f1_score": f1
+            })
+            print(f"Keyword F1 Score: {f1:.3f}")
+        
+        # Summary
+        print("\n" + "=" * 60)
+        print("BENCHMARK SUMMARY")
+        print("=" * 60)
+        print(f"Total questions: {len(results_summary)}")
+        print(f"Average search time: {total_search_time / len(results_summary):.2f}ms")
+        avg_f1 = sum(r["f1_score"] for r in results_summary) / len(results_summary)
+        print(f"Average keyword F1: {avg_f1:.3f}")
+        print()
+        print("Per-question results:")
+        print(f"{'ID':<6} {'Search(ms)':<12} {'F1 Score':<10}")
+        print("-" * 30)
+        for r in results_summary:
+            print(f"{r['id']:<6} {r['search_time_ms']:<12.2f} {r['f1_score']:<10.3f}")
     
     print("\n" + "=" * 60)
-    print("Test Complete!")
+    print("Benchmark Complete!")
     print("=" * 60)
 
 if __name__ == "__main__":

@@ -1,0 +1,75 @@
+{
+  "document": {
+    "name": "Quantum Computing: Vision and Challenges",
+    "file": "Quantum_computing_visionandchallenges.pdf",
+    "pages": 15,
+    "words": 8092
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Can you state the mathematical representation of a qubit?",
+      "answer": "𝑎|0⟩ + 𝑏|1⟩ where 𝑎 and 𝑏 are complex amplitudes (𝑎, 𝑏 ∈ ℂ)",
+      "relevant_chunks": ["Quantum Computing in a nutshell"],
+      "difficulty": "easy",
+      "category": "factual"
+    },
+    {
+      "id": "q2",
+      "text": "Can you name the algorithms based on amplitude amplification?",
+      "answer": "Grover's algorithm and quantum counting",
+      "relevant_chunks": ["Quantum Algorithms"],
+      "difficulty": "easy",
+      "category": "factual"
+    },
+    {
+      "id": "q3",
+      "text": "Are there any Quantum programming language that is not tied to particular hardware provider. If so, name them?",
+      "answer": "All the current Quantum programming languages are tied to a hardware provider",
+      "relevant_chunks": ["Technological Advances and Software Tools"],
+      "difficulty": "easy",
+      "category": "analytical"
+    },
+    {
+      "id": "q4",
+      "text": "Name the company that allows cloud usage of Quantum machine in 2016. What are the limitations?",
+      "answer": "IBM provides cloud usage of Quantum machines with up to 65 qubits",
+      "relevant_chunks": ["Scalable Commercial Quantum Computing Manufacturing Challenges"],
+      "difficulty": "easy",
+      "category": "factual"
+    },
+    {
+      "id": "q5",
+      "text": "What is the primary challenge in quantum technology. Can you name their sources?",
+      "answer": "Vulnerability is the main challenge with Quantum technology. It arises due to their superconductivity and relatively high substantial rate of errors",
+      "relevant_chunks": ["Technological and Developmental Challenges"],
+      "difficulty": "easy",
+      "category": "factual"
+    },
+    {
+      "id": "q6",
+      "text": "How many key topics are discussed in the new trends and potential challenges section. Can you name them?",
+      "answer": "There are close to 10 key topics that are discussed in the new trends and potential challenges section. They are 1. Technological and Developmental challenges 2. Resilient and Sustainable Quantum modeling 3. Quantum ML & QAI 4. Power Control and Management 5. Quantum Web/Internet 6. The Robotics View of Quantum 7. Simulations for Advanced Quantum Research 8. Modern Cryptography 9. Statistical Modelling of Future Climate 10. Quantum Cloud Computing",
+      "relevant_chunks": ["New Trends and Potential Challenges"],
+      "difficulty": "medium",
+      "category": "analytical"
+    },
+    {
+      "id": "q7",
+      "text": "What are the features that quantum simulators can take advantage of?",
+      "answer": "Simulators can take advantage of two key features namely entanglement and superposition",
+      "relevant_chunks": ["Simulations for Advanced Quantum Research"],
+      "difficulty": "easy",
+      "category": "factual"
+    },
+    {
+      "id": "q8",
+      "text": "How many references have been considered for this research on quantum computing vision and challenges?",
+      "answer": "At least 82 references have been considered for this research on quantum computing vision and challenges",
+      "relevant_chunks": ["References"],
+      "difficulty": "easy",
+      "category": "analytical"
+    }
+  ],
+  "annotation_notes": "Human-labeled gold standard Q&A dataset created January 3, 2026"
+}
