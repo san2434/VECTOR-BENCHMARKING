@@ -1,0 +1,223 @@
+================================================================================
+RAG VECTOR DATABASE BENCHMARK - COMPARISON REPORT
+Generated: 2026-01-04 12:07:12
+================================================================================
+
+================================================================================
+EXPERIMENT CONFIGURATION
+================================================================================
+Document: quantum_vision_full_text.txt
+Embedding Model: text-embedding-3-small
+Embedding Dimensions: 1536
+Chunk Size: 500 characters
+Chunk Overlap: 50 characters
+Total Chunks: 164
+Total Questions: 8
+LLM for RAG: GPT-4o-mini (temperature=0.0)
+
+================================================================================
+SUMMARY COMPARISON TABLE
+================================================================================
+Configuration        Index Time(s)   Avg Search(ms)   Avg F1 Score
+-----------------------------------------------------------------
+pinecone_hnsw        16.094          58.77            0.419       
+postgres_ivf         0.515           16.35            0.410       
+chromadb_hnsw        0.098           6.56             0.400       
+chromadb_ivf         0.088           4.61             0.398       
+pinecone_ivf         17.821          94.10            0.389       
+postgres_hnsw        0.495           16.65            0.369       
+
+-----------------------------------------------------------------
+🏆 Best F1 Score: pinecone_hnsw (0.419)
+⚡ Fastest Search: chromadb_ivf (4.61ms)
+🚀 Fastest Index: chromadb_ivf (0.088s)
+
+================================================================================
+DETAILED RESULTS: CHROMADB_HNSW
+================================================================================
+
+Hyperparameters:
+  Database: chromadb
+  Index Type: HNSW
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Performance Metrics:
+  Index Build Time: 0.098s
+  Average Search Time: 6.56ms
+  Average F1 Score: 0.400
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     16.19        0.419      chunk_0027  
+q2     4.49         0.353      chunk_0034  
+q3     4.49         0.409      chunk_0043  
+q4     5.17         0.118      chunk_0120  
+q5     4.85         0.320      chunk_0087  
+q6     8.05         0.373      chunk_0089  
+q7     4.67         0.667      chunk_0110  
+q8     4.56         0.541      chunk_0000  
+
+================================================================================
+DETAILED RESULTS: CHROMADB_IVF
+================================================================================
+
+Hyperparameters:
+  Database: chromadb
+  Index Type: IVF
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Performance Metrics:
+  Index Build Time: 0.088s
+  Average Search Time: 4.61ms
+  Average F1 Score: 0.398
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     8.75         0.294      chunk_0027  
+q2     1.33         0.353      chunk_0034  
+q3     3.90         0.476      chunk_0043  
+q4     3.66         0.133      chunk_0120  
+q5     2.89         0.320      chunk_0087  
+q6     7.90         0.404      chunk_0089  
+q7     4.85         0.667      chunk_0110  
+q8     3.59         0.541      chunk_0000  
+
+================================================================================
+DETAILED RESULTS: PINECONE_HNSW
+================================================================================
+
+Hyperparameters:
+  Database: pinecone
+  Index Type: HNSW
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Performance Metrics:
+  Index Build Time: 16.094s
+  Average Search Time: 58.77ms
+  Average F1 Score: 0.419
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     73.96        0.550      chunk_0027  
+q2     81.54        0.353      chunk_0034  
+q3     78.25        0.409      chunk_0043  
+q4     82.03        0.118      chunk_0120  
+q5     39.02        0.314      chunk_0087  
+q6     39.08        0.404      chunk_0089  
+q7     39.52        0.667      chunk_0110  
+q8     36.79        0.541      chunk_0000  
+
+================================================================================
+DETAILED RESULTS: PINECONE_IVF
+================================================================================
+
+Hyperparameters:
+  Database: pinecone
+  Index Type: IVF
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Performance Metrics:
+  Index Build Time: 17.821s
+  Average Search Time: 94.10ms
+  Average F1 Score: 0.389
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     84.94        0.294      chunk_0027  
+q2     241.27       0.353      chunk_0034  
+q3     67.73        0.409      chunk_0043  
+q4     84.11        0.130      chunk_0120  
+q5     76.42        0.314      chunk_0087  
+q6     75.56        0.404      chunk_0089  
+q7     39.98        0.667      chunk_0110  
+q8     82.78        0.541      chunk_0000  
+
+================================================================================
+DETAILED RESULTS: POSTGRES_HNSW
+================================================================================
+
+Hyperparameters:
+  Database: postgres
+  Index Type: HNSW
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Performance Metrics:
+  Index Build Time: 0.495s
+  Average Search Time: 16.65ms
+  Average F1 Score: 0.369
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     20.65        0.419      chunk_0027  
+q2     16.42        0.353      chunk_0034  
+q3     15.02        0.476      chunk_0043  
+q4     17.39        0.118      chunk_0120  
+q5     19.16        0.314      chunk_0087  
+q6     11.98        0.404      chunk_0089  
+q7     15.67        0.667      chunk_0110  
+q8     16.89        0.200      chunk_0000  
+
+================================================================================
+DETAILED RESULTS: POSTGRES_IVF
+================================================================================
+
+Hyperparameters:
+  Database: postgres
+  Index Type: IVF
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Performance Metrics:
+  Index Build Time: 0.515s
+  Average Search Time: 16.35ms
+  Average F1 Score: 0.410
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     17.46        0.419      chunk_0027  
+q2     18.18        0.353      chunk_0034  
+q3     16.07        0.409      chunk_0043  
+q4     10.92        0.133      chunk_0120  
+q5     17.94        0.314      chunk_0087  
+q6     19.35        0.444      chunk_0089  
+q7     19.08        0.667      chunk_0110  
+q8     11.80        0.541      chunk_0000  
+
+================================================================================
+PER-QUESTION COMPARISON (F1 Scores)
+================================================================================
+Question   chromadb_hns chromadb_ivf pinecone_hns pinecone_ivf postgres_hns postgres_ivf
+----------------------------------------------------------------------------------------
+q1         0.419        0.294        0.550        0.294        0.419        0.419       
+q2         0.353        0.353        0.353        0.353        0.353        0.353       
+q3         0.409        0.476        0.409        0.409        0.476        0.409       
+q4         0.118        0.133        0.118        0.130        0.118        0.133       
+q5         0.320        0.320        0.314        0.314        0.314        0.314       
+q6         0.373        0.404        0.404        0.404        0.404        0.444       
+q7         0.667        0.667        0.667        0.667        0.667        0.667       
+q8         0.541        0.541        0.541        0.541        0.200        0.541       
+
+================================================================================
+END OF BENCHMARK REPORT
+================================================================================

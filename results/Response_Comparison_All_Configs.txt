@@ -1,0 +1,1320 @@
+====================================================================================================
+RAG RESPONSE COMPARISON - ALL CONFIGURATIONS
+Generated: January 4, 2026
+====================================================================================================
+
+####################################################################################################
+QUESTION 1: Can you state the mathematical representation of a qubit?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+𝑎|0⟩ + 𝑏|1⟩ where 𝑎 and 𝑏 are complex amplitudes (𝑎, 𝑏 ∈ ℂ)
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0027 (distance: 0.3363)
+  2. chunk_0013 (distance: 0.3650)
+  3. chunk_0028 (distance: 0.4009)
+
+Generated Response:
+--------------------------------------------------
+The mathematical representation of a qubit in the computational basis {|0⟩, |1⟩} is given as: 
+
+𝑎|0⟩ + 𝑏|1⟩, 
+
+where 𝑎 and 𝑏 are complex amplitudes satisfying the condition |𝑎|² + |𝑏|² = 1.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 16.19 ms
+  F1 Score: 0.419
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0027 (distance: 0.3363)
+  2. chunk_0013 (distance: 0.3650)
+  3. chunk_0028 (distance: 0.4009)
+
+Generated Response:
+--------------------------------------------------
+The mathematical representation of a qubit is given as: \( a|0⟩ + b|1⟩ \), where \( a \) and \( b \) are complex amplitudes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 8.75 ms
+  F1 Score: 0.294
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0027 (score: 0.6636)
+  2. chunk_0013 (score: 0.6350)
+  3. chunk_0029 (score: 0.5403)
+
+Generated Response:
+--------------------------------------------------
+The mathematical representation of a qubit in the computational basis {|0⟩, |1⟩} is given as: 
+
+𝑎|0⟩ + 𝑏|1⟩, 
+
+where 𝑎 and 𝑏 are complex amplitudes (𝑎, 𝑏 ∈ ℂ).
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 73.96 ms
+  F1 Score: 0.550
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0027 (score: 0.6638)
+  2. chunk_0013 (score: 0.6351)
+  3. chunk_0028 (score: 0.5992)
+
+Generated Response:
+--------------------------------------------------
+The mathematical representation of a qubit is given as: \( a|0⟩ + b|1⟩ \), where \( a \) and \( b \) are complex amplitudes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 84.94 ms
+  F1 Score: 0.294
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0027 (similarity: 0.6637)
+  2. chunk_0013 (similarity: 0.6350)
+  3. chunk_0028 (similarity: 0.5991)
+
+Generated Response:
+--------------------------------------------------
+The mathematical representation of a qubit in the computational basis {|0⟩, |1⟩} is given as: 
+
+𝑎|0⟩ + 𝑏|1⟩, 
+
+where 𝑎 and 𝑏 are complex amplitudes satisfying the condition |𝑎|² + |𝑏|² = 1.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 20.65 ms
+  F1 Score: 0.419
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0027 (similarity: 0.6637)
+  2. chunk_0013 (similarity: 0.6350)
+  3. chunk_0028 (similarity: 0.5991)
+
+Generated Response:
+--------------------------------------------------
+The mathematical representation of a qubit in the computational basis {|0⟩, |1⟩} is given as: 
+
+𝑎|0⟩ + 𝑏|1⟩, 
+
+where 𝑎 and 𝑏 are complex amplitudes satisfying the condition |𝑎|² + |𝑏|² = 1.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 17.46 ms
+  F1 Score: 0.419
+
+####################################################################################################
+QUESTION 2: Can you name the algorithms based on amplitude amplification?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+Grover's algorithm and quantum counting
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0034 (distance: 0.5380)
+  2. chunk_0033 (distance: 0.5923)
+  3. chunk_0019 (distance: 0.6107)
+
+Generated Response:
+--------------------------------------------------
+The algorithms based on amplitude amplification are Grover’s algorithm and quantum counting.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 4.49 ms
+  F1 Score: 0.353
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0034 (distance: 0.5380)
+  2. chunk_0033 (distance: 0.5923)
+  3. chunk_0019 (distance: 0.6107)
+
+Generated Response:
+--------------------------------------------------
+The algorithms based on amplitude amplification are Grover’s algorithm and quantum counting.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 1.33 ms
+  F1 Score: 0.353
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0034 (score: 0.4620)
+  2. chunk_0033 (score: 0.4078)
+  3. chunk_0019 (score: 0.3891)
+
+Generated Response:
+--------------------------------------------------
+The algorithms based on amplitude amplification are Grover’s algorithm and quantum counting.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 81.54 ms
+  F1 Score: 0.353
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0034 (score: 0.4620)
+  2. chunk_0033 (score: 0.4078)
+  3. chunk_0019 (score: 0.3891)
+
+Generated Response:
+--------------------------------------------------
+The algorithms based on amplitude amplification are Grover’s algorithm and quantum counting.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 241.27 ms
+  F1 Score: 0.353
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0034 (similarity: 0.4620)
+  2. chunk_0033 (similarity: 0.4077)
+  3. chunk_0019 (similarity: 0.3893)
+
+Generated Response:
+--------------------------------------------------
+The algorithms based on amplitude amplification are Grover’s algorithm and quantum counting.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 16.42 ms
+  F1 Score: 0.353
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0034 (similarity: 0.4620)
+  2. chunk_0033 (similarity: 0.4077)
+  3. chunk_0019 (similarity: 0.3893)
+
+Generated Response:
+--------------------------------------------------
+The algorithms based on amplitude amplification are Grover’s algorithm and quantum counting.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 18.18 ms
+  F1 Score: 0.353
+
+####################################################################################################
+QUESTION 3: Are there any Quantum programming language that is not tied to particular hardware provider. If so, name them?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+All the current Quantum programming languages are tied to a hardware provider
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0043 (distance: 0.3466)
+  2. chunk_0142 (distance: 0.3691)
+  3. chunk_0040 (distance: 0.3745)
+
+Generated Response:
+--------------------------------------------------
+The context does not mention any quantum programming languages that are not tied to a particular hardware provider. It only lists Qiskit, Cirq, and PyQuil, which are associated with IBM, Google, and Rigetti Computing, respectively.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 4.49 ms
+  F1 Score: 0.409
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0043 (distance: 0.3466)
+  2. chunk_0142 (distance: 0.3691)
+  3. chunk_0040 (distance: 0.3745)
+
+Generated Response:
+--------------------------------------------------
+The context does not mention any quantum programming languages that are not tied to a particular hardware provider. It primarily discusses Qiskit, Cirq, and PyQuil, which are all associated with specific hardware solutions.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 3.90 ms
+  F1 Score: 0.476
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0043 (score: 0.6536)
+  2. chunk_0142 (score: 0.6309)
+  3. chunk_0040 (score: 0.6253)
+
+Generated Response:
+--------------------------------------------------
+The context does not mention any quantum programming languages that are not tied to a particular hardware provider. It only lists Qiskit, Cirq, and PyQuil, which are associated with IBM, Google, and Rigetti Computing, respectively.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 78.25 ms
+  F1 Score: 0.409
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0043 (score: 0.6536)
+  2. chunk_0142 (score: 0.6309)
+  3. chunk_0040 (score: 0.6253)
+
+Generated Response:
+--------------------------------------------------
+The context does not mention any quantum programming languages that are not tied to a particular hardware provider. It only lists Qiskit, Cirq, and PyQuil, which are associated with IBM, Google, and Rigetti Computing, respectively.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 67.73 ms
+  F1 Score: 0.409
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0043 (similarity: 0.6534)
+  2. chunk_0142 (similarity: 0.6309)
+  3. chunk_0040 (similarity: 0.6255)
+
+Generated Response:
+--------------------------------------------------
+The context does not mention any quantum programming languages that are not tied to a particular hardware provider. It primarily discusses Qiskit, Cirq, and PyQuil, which are all associated with specific hardware solutions.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 15.02 ms
+  F1 Score: 0.476
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0043 (similarity: 0.6534)
+  2. chunk_0142 (similarity: 0.6309)
+  3. chunk_0040 (similarity: 0.6255)
+
+Generated Response:
+--------------------------------------------------
+The context does not mention any quantum programming languages that are not tied to a particular hardware provider. It only lists Qiskit, Cirq, and PyQuil, which are associated with IBM, Google, and Rigetti Computing, respectively.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 16.07 ms
+  F1 Score: 0.409
+
+####################################################################################################
+QUESTION 4: Name the company that allows cloud usage of Quantum machine in 2016. What are the limitations?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+IBM provides cloud usage of Quantum machines with up to 65 qubits
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0120 (distance: 0.4108)
+  2. chunk_0084 (distance: 0.4123)
+  3. chunk_0107 (distance: 0.4197)
+
+Generated Response:
+--------------------------------------------------
+The company mentioned is Quantum Inspire. The limitations include the need for robust quantum computers to be widely available and the challenges in simulating complicated quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 5.17 ms
+  F1 Score: 0.118
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0120 (distance: 0.4108)
+  2. chunk_0084 (distance: 0.4123)
+  3. chunk_0107 (distance: 0.4197)
+
+Generated Response:
+--------------------------------------------------
+The company mentioned is Quantum Inspire. The limitations include the need for users to access quantum computing power without investing in or constructing a physical quantum computer, which may restrict the extent of customization and control over the quantum computing resources.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 3.66 ms
+  F1 Score: 0.133
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0120 (score: 0.5894)
+  2. chunk_0084 (score: 0.5880)
+  3. chunk_0107 (score: 0.5805)
+
+Generated Response:
+--------------------------------------------------
+The company mentioned is Quantum Inspire. The limitations include the need for robust quantum computers to be widely available and the challenges in simulating complicated quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 82.03 ms
+  F1 Score: 0.118
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0120 (score: 0.5894)
+  2. chunk_0084 (score: 0.5880)
+  3. chunk_0107 (score: 0.5805)
+
+Generated Response:
+--------------------------------------------------
+The company mentioned is Quantum Inspire. The limitations include the need for users to access quantum computing power without investing in or constructing a physical quantum computer, which may restrict the extent of their control and customization over the quantum computing resources.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 84.11 ms
+  F1 Score: 0.130
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0120 (similarity: 0.5892)
+  2. chunk_0084 (similarity: 0.5877)
+  3. chunk_0107 (similarity: 0.5803)
+
+Generated Response:
+--------------------------------------------------
+The company mentioned is Quantum Inspire. The limitations include the need for robust quantum computers to be widely available and the challenges in simulating complicated quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 17.39 ms
+  F1 Score: 0.118
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0120 (similarity: 0.5892)
+  2. chunk_0084 (similarity: 0.5877)
+  3. chunk_0107 (similarity: 0.5803)
+
+Generated Response:
+--------------------------------------------------
+The company mentioned is Quantum Inspire. The limitations include the need for users to access quantum computing power without investing in or constructing a physical quantum computer, which may restrict the extent of customization and control over the quantum computing resources.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 10.92 ms
+  F1 Score: 0.133
+
+####################################################################################################
+QUESTION 5: What is the primary challenge in quantum technology. Can you name their sources?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+Vulnerability is the main challenge with Quantum technology. It arises due to their superconductivity and relatively high substantial rate of errors
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0087 (distance: 0.3290)
+  2. chunk_0078 (distance: 0.4173)
+  3. chunk_0068 (distance: 0.4254)
+
+Generated Response:
+--------------------------------------------------
+The primary challenge in quantum technology is its vulnerability, which arises from two main sources: 1) the very short coherence period of qubits, and 2) noise or decoherence affecting quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 4.85 ms
+  F1 Score: 0.320
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0087 (distance: 0.3290)
+  2. chunk_0078 (distance: 0.4173)
+  3. chunk_0068 (distance: 0.4254)
+
+Generated Response:
+--------------------------------------------------
+The primary challenge in quantum technology is its vulnerability, which arises from two main sources: 1) the very short coherence period of qubits, and 2) noise or decoherence affecting quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 2.89 ms
+  F1 Score: 0.320
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0087 (score: 0.6712)
+  2. chunk_0078 (score: 0.5825)
+  3. chunk_0068 (score: 0.5745)
+
+Generated Response:
+--------------------------------------------------
+The primary challenge in quantum technology is its vulnerability, which arises from two main sources: 1) the very short coherence period of qubits, and 2) noise or decoherence that affects quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 39.02 ms
+  F1 Score: 0.314
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0087 (score: 0.6711)
+  2. chunk_0078 (score: 0.5824)
+  3. chunk_0068 (score: 0.5744)
+
+Generated Response:
+--------------------------------------------------
+The primary challenge in quantum technology is its vulnerability, which arises from two main sources: 1) the very short coherence period of qubits, and 2) noise or decoherence that affects quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 76.42 ms
+  F1 Score: 0.314
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0087 (similarity: 0.6710)
+  2. chunk_0078 (similarity: 0.5827)
+  3. chunk_0068 (similarity: 0.5746)
+
+Generated Response:
+--------------------------------------------------
+The primary challenge in quantum technology is its vulnerability, which arises from two main sources: 1) the very short coherence period of qubits, and 2) noise or decoherence that affects quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 19.16 ms
+  F1 Score: 0.314
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0087 (similarity: 0.6710)
+  2. chunk_0078 (similarity: 0.5827)
+  3. chunk_0068 (similarity: 0.5746)
+
+Generated Response:
+--------------------------------------------------
+The primary challenge in quantum technology is its vulnerability, which arises from two main sources: 1) the very short coherence period of qubits, and 2) noise or decoherence that affects quantum processes.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 17.94 ms
+  F1 Score: 0.314
+
+####################################################################################################
+QUESTION 6: How many key topics are discussed in the new trends and potential challenges section. Can you name them?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+There are close to 10 key topics that are discussed in the new trends and potential challenges section. They are 1. Technological and Developmental challenges 2. Resilient and Sustainable Quantum modeling 3. Quantum ML & QAI 4. Power Control and Management 5. Quantum Web/Internet 6. The Robotics View of Quantum 7. Simulations for Advanced Quantum Research 8. Modern Cryptography 9. Statistical Modelling of Future Climate 10. Quantum Cloud Computing
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0089 (distance: 0.5651)
+  2. chunk_0084 (distance: 0.6115)
+  3. chunk_0006 (distance: 0.6121)
+
+Generated Response:
+--------------------------------------------------
+The context does not specify the exact number of key topics discussed in the new trends and potential challenges section. However, it mentions several areas of focus, including:
+
+1. Simulating complicated quantum processes
+2. Quantum computer hardware advancement
+3. Quantum cryptography
+4. Quantum software
+5. High-scalability quantum computers
+
+These areas represent potential challenges and exciting new trends in quantum technology research.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 8.05 ms
+  F1 Score: 0.373
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0089 (distance: 0.5651)
+  2. chunk_0084 (distance: 0.6115)
+  3. chunk_0006 (distance: 0.6121)
+
+Generated Response:
+--------------------------------------------------
+The context does not specify the exact number of key topics discussed in the new trends and potential challenges section. However, it mentions several areas of focus, including:
+
+1. Statistical Modelling of Climate
+2. Numerical Weather Predictions
+3. Global Warming and Carbon Neutrality
+4. Quantum Computing
+5. Climate Modelling
+
+These areas suggest a broader discussion on quantum computing and its applications, but the exact number of key topics is not provided.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 7.90 ms
+  F1 Score: 0.404
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0089 (score: 0.4344)
+  2. chunk_0084 (score: 0.3892)
+  3. chunk_0006 (score: 0.3878)
+
+Generated Response:
+--------------------------------------------------
+The context does not specify the exact number of key topics discussed in the new trends and potential challenges section. However, it mentions several areas of focus, including:
+
+1. Statistical Modelling of Climate
+2. Numerical Weather Predictions
+3. Global Warming and Carbon Neutrality
+4. Quantum Computing
+5. Climate Modelling
+
+These areas suggest a broader discussion on quantum computing and its applications, but the exact number of key topics is not provided.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 39.08 ms
+  F1 Score: 0.404
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0089 (score: 0.4342)
+  2. chunk_0084 (score: 0.3890)
+  3. chunk_0006 (score: 0.3876)
+
+Generated Response:
+--------------------------------------------------
+The context does not specify the exact number of key topics discussed in the new trends and potential challenges section. However, it mentions several areas of focus, including:
+
+1. Statistical Modelling of Climate
+2. Numerical Weather Predictions
+3. Global Warming and Carbon Neutrality
+4. Quantum Computing
+5. Climate Modelling
+
+These areas suggest a broader discussion on quantum computing and its applications, but the exact number of key topics is not provided.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 75.56 ms
+  F1 Score: 0.404
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0089 (similarity: 0.4349)
+  2. chunk_0084 (similarity: 0.3885)
+  3. chunk_0006 (similarity: 0.3879)
+
+Generated Response:
+--------------------------------------------------
+The context does not specify the exact number of key topics discussed in the new trends and potential challenges section. However, it mentions several areas of focus, including:
+
+1. Statistical Modelling of Climate
+2. Numerical Weather Predictions
+3. Global Warming and Carbon Neutrality
+4. Quantum Computing
+5. Climate Modelling
+
+These areas suggest a broader discussion on quantum computing and its applications, but the exact number of key topics is not provided.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 11.98 ms
+  F1 Score: 0.404
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0089 (similarity: 0.4349)
+  2. chunk_0084 (similarity: 0.3885)
+  3. chunk_0006 (similarity: 0.3879)
+
+Generated Response:
+--------------------------------------------------
+The context does not specify the exact number of key topics discussed in the new trends and potential challenges section. However, it mentions several areas of focus, including:
+
+1. Statistical Modelling of Climate
+2. Numerical Weather Predictions
+3. Global Warming and Carbon Neutrality
+4. Quantum Computing
+5. Climate Modelling
+
+These topics are part of the broader discussion on quantum technology research and development challenges.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 19.35 ms
+  F1 Score: 0.444
+
+####################################################################################################
+QUESTION 7: What are the features that quantum simulators can take advantage of?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+Simulators can take advantage of two key features namely entanglement and superposition
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0110 (distance: 0.3045)
+  2. chunk_0111 (distance: 0.3350)
+  3. chunk_0004 (distance: 0.3786)
+
+Generated Response:
+--------------------------------------------------
+Quantum simulators can take advantage of entanglement and superposition.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 4.67 ms
+  F1 Score: 0.667
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0110 (distance: 0.3045)
+  2. chunk_0111 (distance: 0.3350)
+  3. chunk_0004 (distance: 0.3786)
+
+Generated Response:
+--------------------------------------------------
+Quantum simulators can take advantage of entanglement and superposition.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 4.85 ms
+  F1 Score: 0.667
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0110 (score: 0.6955)
+  2. chunk_0111 (score: 0.6647)
+  3. chunk_0004 (score: 0.6212)
+
+Generated Response:
+--------------------------------------------------
+Quantum simulators can take advantage of entanglement and superposition.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 39.52 ms
+  F1 Score: 0.667
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0110 (score: 0.6955)
+  2. chunk_0111 (score: 0.6647)
+  3. chunk_0004 (score: 0.6212)
+
+Generated Response:
+--------------------------------------------------
+Quantum simulators can take advantage of entanglement and superposition.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 39.98 ms
+  F1 Score: 0.667
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0110 (similarity: 0.6955)
+  2. chunk_0111 (similarity: 0.6650)
+  3. chunk_0004 (similarity: 0.6214)
+
+Generated Response:
+--------------------------------------------------
+Quantum simulators can take advantage of entanglement and superposition.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 15.67 ms
+  F1 Score: 0.667
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0110 (similarity: 0.6955)
+  2. chunk_0111 (similarity: 0.6650)
+  3. chunk_0004 (similarity: 0.6214)
+
+Generated Response:
+--------------------------------------------------
+Quantum simulators can take advantage of entanglement and superposition.
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 19.08 ms
+  F1 Score: 0.667
+
+####################################################################################################
+QUESTION 8: How many references have been considered for this research on quantum computing vision and challenges?
+####################################################################################################
+
+HUMAN ANSWER (Ground Truth):
+--------------------------------------------------
+At least 82 references have been considered for this research on quantum computing vision and challenges
+
+====================================================================================================
+>>> CHROMADB + HNSW
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  hnsw_m: 16
+  hnsw_ef_construction: 200
+  hnsw_ef_search: 50
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0000 (distance: 0.2882)
+  2. chunk_0021 (distance: 0.3236)
+  3. chunk_0006 (distance: 0.3237)
+
+Generated Response:
+--------------------------------------------------
+The research on quantum computing vision and challenges has considered at least 25 references, as indicated by the citations [23, 24, 25].
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 4.56 ms
+  F1 Score: 0.541
+
+====================================================================================================
+>>> CHROMADB + IVF
+====================================================================================================
+
+Hyperparameters:
+  space: cosine
+  nlist: 100
+  nprobe: 10
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0000 (distance: 0.2883)
+  2. chunk_0021 (distance: 0.3237)
+  3. chunk_0006 (distance: 0.3237)
+
+Generated Response:
+--------------------------------------------------
+The research on quantum computing vision and challenges has considered at least 25 references, as indicated by the citations [23, 24, 25].
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 3.59 ms
+  F1 Score: 0.541
+
+====================================================================================================
+>>> PINECONE + HNSW
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0000 (score: 0.7122)
+  2. chunk_0006 (score: 0.6761)
+  3. chunk_0021 (score: 0.6757)
+
+Generated Response:
+--------------------------------------------------
+The research on quantum computing vision and challenges has considered at least 25 references, as indicated by the citations [23, 24, 25].
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 36.79 ms
+  F1 Score: 0.541
+
+====================================================================================================
+>>> PINECONE + IVF
+====================================================================================================
+
+Hyperparameters:
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0000 (score: 0.7122)
+  2. chunk_0006 (score: 0.6764)
+  3. chunk_0021 (score: 0.6758)
+
+Generated Response:
+--------------------------------------------------
+The research on quantum computing vision and challenges has considered at least 25 references, as indicated by the citations [23, 24, 25].
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 82.78 ms
+  F1 Score: 0.541
+
+====================================================================================================
+>>> POSTGRES + HNSW
+====================================================================================================
+
+Hyperparameters:
+  m: 16
+  ef_construction: 64
+  ef_search: 40
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0000 (similarity: 0.7117)
+  2. chunk_0021 (similarity: 0.6763)
+  3. chunk_0006 (similarity: 0.6763)
+
+Generated Response:
+--------------------------------------------------
+The research considers at least 25 references, as indicated by the citations [23, 24, 25].
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 16.89 ms
+  F1 Score: 0.200
+
+====================================================================================================
+>>> POSTGRES + IVF
+====================================================================================================
+
+Hyperparameters:
+  lists: 100
+  probes: 10
+  distance: cosine
+
+Retrieved Chunks (Top 3):
+--------------------------------------------------
+  1. chunk_0000 (similarity: 0.7117)
+  2. chunk_0021 (similarity: 0.6763)
+  3. chunk_0006 (similarity: 0.6763)
+
+Generated Response:
+--------------------------------------------------
+The research on quantum computing vision and challenges has considered at least 25 references, as indicated by the citations [23, 24, 25].
+
+Evaluation Metrics:
+--------------------------------------------------
+  Search Time: 11.80 ms
+  F1 Score: 0.541
+
+====================================================================================================
+END OF RESPONSE COMPARISON
+====================================================================================================

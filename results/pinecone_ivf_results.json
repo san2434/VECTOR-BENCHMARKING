@@ -1,0 +1,162 @@
+{
+  "config_name": "pinecone_ivf",
+  "config": {
+    "db": "pinecone",
+    "index_type": "IVF",
+    "params": {
+      "metric": "cosine",
+      "cloud": "aws",
+      "region": "us-east-1",
+      "spec": "serverless"
+    }
+  },
+  "index_time_s": 17.82066297531128,
+  "avg_search_time_ms": 94.09677982330322,
+  "avg_f1_score": 0.388898367175368,
+  "results": [
+    {
+      "id": "q1",
+      "question": "Can you state the mathematical representation of a qubit?",
+      "expected": "\ud835\udc4e|0\u27e9 + \ud835\udc4f|1\u27e9 where \ud835\udc4e and \ud835\udc4f are complex amplitudes (\ud835\udc4e, \ud835\udc4f \u2208 \u2102)",
+      "answer": "The mathematical representation of a qubit is given as: \\( a|0\u27e9 + b|1\u27e9 \\), where \\( a \\) and \\( b \\) are complex amplitudes.",
+      "search_time_ms": 84.93804931640625,
+      "f1_score": 0.2941176470588235,
+      "top_chunks": [
+        "chunk_0027",
+        "chunk_0013",
+        "chunk_0028"
+      ],
+      "scores": [
+        0.663765,
+        0.635098457,
+        0.599200308
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Can you name the algorithms based on amplitude amplification?",
+      "expected": "Grover's algorithm and quantum counting",
+      "answer": "The algorithms based on amplitude amplification are Grover\u2019s algorithm and quantum counting.",
+      "search_time_ms": 241.2729263305664,
+      "f1_score": 0.35294117647058826,
+      "top_chunks": [
+        "chunk_0034",
+        "chunk_0033",
+        "chunk_0019"
+      ],
+      "scores": [
+        0.461992294,
+        0.407752067,
+        0.389093429
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "Are there any Quantum programming language that is not tied to particular hardware provider. If so, name them?",
+      "expected": "All the current Quantum programming languages are tied to a hardware provider",
+      "answer": "The context does not mention any quantum programming languages that are not tied to a particular hardware provider. It only lists Qiskit, Cirq, and PyQuil, which are associated with IBM, Google, and Rigetti Computing, respectively.",
+      "search_time_ms": 67.72589683532715,
+      "f1_score": 0.4090909090909091,
+      "top_chunks": [
+        "chunk_0043",
+        "chunk_0142",
+        "chunk_0040"
+      ],
+      "scores": [
+        0.653568268,
+        0.630935669,
+        0.625322402
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Name the company that allows cloud usage of Quantum machine in 2016. What are the limitations?",
+      "expected": "IBM provides cloud usage of Quantum machines with up to 65 qubits",
+      "answer": "The company mentioned is Quantum Inspire. The limitations include the need for users to access quantum computing power without investing in or constructing a physical quantum computer, which may restrict the extent of their control and customization over the quantum computing resources.",
+      "search_time_ms": 84.1062068939209,
+      "f1_score": 0.13043478260869565,
+      "top_chunks": [
+        "chunk_0120",
+        "chunk_0084",
+        "chunk_0107"
+      ],
+      "scores": [
+        0.589438438,
+        0.588006,
+        0.58053875
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "What is the primary challenge in quantum technology. Can you name their sources?",
+      "expected": "Vulnerability is the main challenge with Quantum technology. It arises due to their superconductivity and relatively high substantial rate of errors",
+      "answer": "The primary challenge in quantum technology is its vulnerability, which arises from two main sources: 1) the very short coherence period of qubits, and 2) noise or decoherence that affects quantum processes.",
+      "search_time_ms": 76.416015625,
+      "f1_score": 0.3137254901960784,
+      "top_chunks": [
+        "chunk_0087",
+        "chunk_0078",
+        "chunk_0068"
+      ],
+      "scores": [
+        0.671105385,
+        0.582429886,
+        0.574386597
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "How many key topics are discussed in the new trends and potential challenges section. Can you name them?",
+      "expected": "There are close to 10 key topics that are discussed in the new trends and potential challenges section. They are 1. Technological and Developmental challenges 2. Resilient and Sustainable Quantum modeling 3. Quantum ML & QAI 4. Power Control and Management 5. Quantum Web/Internet 6. The Robotics View of Quantum 7. Simulations for Advanced Quantum Research 8. Modern Cryptography 9. Statistical Modelling of Future Climate 10. Quantum Cloud Computing",
+      "answer": "The context does not specify the exact number of key topics discussed in the new trends and potential challenges section. However, it mentions several areas of focus, including:\n\n1. Statistical Modelling of Climate\n2. Numerical Weather Predictions\n3. Global Warming and Carbon Neutrality\n4. Quantum Computing\n5. Climate Modelling\n\nThese areas suggest a broader discussion on quantum computing and its applications, but the exact number of key topics is not provided.",
+      "search_time_ms": 75.55508613586426,
+      "f1_score": 0.4036697247706422,
+      "top_chunks": [
+        "chunk_0089",
+        "chunk_0084",
+        "chunk_0006"
+      ],
+      "scores": [
+        0.434227,
+        0.38902092,
+        0.387599
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "What are the features that quantum simulators can take advantage of?",
+      "expected": "Simulators can take advantage of two key features namely entanglement and superposition",
+      "answer": "Quantum simulators can take advantage of entanglement and superposition.",
+      "search_time_ms": 39.97993469238281,
+      "f1_score": 0.6666666666666666,
+      "top_chunks": [
+        "chunk_0110",
+        "chunk_0111",
+        "chunk_0004"
+      ],
+      "scores": [
+        0.695509911,
+        0.664690077,
+        0.621183455
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "How many references have been considered for this research on quantum computing vision and challenges?",
+      "expected": "At least 82 references have been considered for this research on quantum computing vision and challenges",
+      "answer": "The research on quantum computing vision and challenges has considered at least 25 references, as indicated by the citations [23, 24, 25].",
+      "search_time_ms": 82.78012275695801,
+      "f1_score": 0.5405405405405405,
+      "top_chunks": [
+        "chunk_0000",
+        "chunk_0006",
+        "chunk_0021"
+      ],
+      "scores": [
+        0.712158263,
+        0.676379263,
+        0.675760329
+      ]
+    }
+  ]
+}
