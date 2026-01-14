@@ -5,7 +5,7 @@ Creates vector store instances for all benchmark configurations.
 """
 
 from typing import Dict, Optional
-from config.settings import BENCHMARK_CONFIGURATIONS, CHROMADB_CONFIG, POSTGRESQL_CONFIG
+from config.settings import BENCHMARK_CONFIGURATIONS, CHROMADB_CONFIG, POSTGRESQL_CONFIG, QDRANT_CONFIG, MILVUS_CONFIG
 import logging
 
 logger = logging.getLogger(__name__)
@@ -70,6 +70,26 @@ class VectorStoreFactory:
                 index_type=index_type,
                 **kwargs
             )
+        
+        elif db_type == "qdrant":
+            from src.vector_stores.qdrant_store import QdrantVectorStore
+            coll_name = f"{collection_name}_{index_type.lower()}"
+            return QdrantVectorStore(
+                collection_name=coll_name,
+                index_type=index_type,
+                persist_directory=QDRANT_CONFIG.get("persist_directory", "./data/qdrant"),
+                **kwargs
+            )
+        
+        elif db_type == "milvus":
+            from src.vector_stores.milvus_store import MilvusVectorStore
+            coll_name = f"{collection_name}_{index_type.lower()}"
+            return MilvusVectorStore(
+                collection_name=coll_name,
+                index_type=index_type,
+                persist_directory=MILVUS_CONFIG.get("persist_directory", "./data/milvus"),
+                **kwargs
+            )
             
         else:
             raise ValueError(f"Unknown database type: {db_type}")
@@ -97,7 +117,7 @@ class VectorStoreFactory:
     @staticmethod
     def create_all_stores(collection_name: str = "benchmark", **kwargs) -> Dict:
         """
-        Create all 6 benchmark vector stores.
+        Create all 10 benchmark vector stores.
         
         Args:
             collection_name: Base name for collections

@@ -1,6 +1,6 @@
 ================================================================================
 RAG VECTOR DATABASE BENCHMARK - COMPARISON REPORT
-Generated: 2026-01-04 12:07:12
+Generated: 2026-01-07 15:40:09
 ================================================================================
 
 ================================================================================
@@ -20,17 +20,17 @@ SUMMARY COMPARISON TABLE
 ================================================================================
 Configuration        Index Time(s)   Avg Search(ms)   Avg F1 Score
 -----------------------------------------------------------------
-pinecone_hnsw        16.094          58.77            0.419       
-postgres_ivf         0.515           16.35            0.410       
-chromadb_hnsw        0.098           6.56             0.400       
-chromadb_ivf         0.088           4.61             0.398       
-pinecone_ivf         17.821          94.10            0.389       
-postgres_hnsw        0.495           16.65            0.369       
+chromadb_hnsw        0.083           4.39             0.414       
+pinecone_hnsw        14.120          53.46            0.413       
+postgres_hnsw        0.508           16.34            0.411       
+postgres_ivf         0.562           17.23            0.411       
+pinecone_ivf         14.988          62.05            0.408       
+chromadb_ivf         0.088           4.52             0.397       
 
 -----------------------------------------------------------------
-🏆 Best F1 Score: pinecone_hnsw (0.419)
-⚡ Fastest Search: chromadb_ivf (4.61ms)
-🚀 Fastest Index: chromadb_ivf (0.088s)
+🏆 Best F1 Score: chromadb_hnsw (0.414)
+⚡ Fastest Search: chromadb_hnsw (4.39ms)
+🚀 Fastest Index: chromadb_hnsw (0.083s)
 
 ================================================================================
 DETAILED RESULTS: CHROMADB_HNSW
@@ -45,21 +45,21 @@ Hyperparameters:
   hnsw_ef_search: 50
 
 Performance Metrics:
-  Index Build Time: 0.098s
-  Average Search Time: 6.56ms
-  Average F1 Score: 0.400
+  Index Build Time: 0.083s
+  Average Search Time: 4.39ms
+  Average F1 Score: 0.414
 
 Per-Question Results:
 ID     Search(ms)   F1 Score   Top Chunk   
 ------------------------------------------
-q1     16.19        0.419      chunk_0027  
-q2     4.49         0.353      chunk_0034  
-q3     4.49         0.409      chunk_0043  
-q4     5.17         0.118      chunk_0120  
-q5     4.85         0.320      chunk_0087  
-q6     8.05         0.373      chunk_0089  
-q7     4.67         0.667      chunk_0110  
-q8     4.56         0.541      chunk_0000  
+q1     7.34         0.419      chunk_0027  
+q2     4.84         0.353      chunk_0034  
+q3     3.23         0.476      chunk_0043  
+q4     8.05         0.130      chunk_0120  
+q5     3.89         0.327      chunk_0087  
+q6     3.54         0.404      chunk_0089  
+q7     1.61         0.667      chunk_0110  
+q8     2.59         0.541      chunk_0000  
 
 ================================================================================
 DETAILED RESULTS: CHROMADB_IVF
@@ -74,78 +74,20 @@ Hyperparameters:
 
 Performance Metrics:
   Index Build Time: 0.088s
-  Average Search Time: 4.61ms
-  Average F1 Score: 0.398
+  Average Search Time: 4.52ms
+  Average F1 Score: 0.397
 
 Per-Question Results:
 ID     Search(ms)   F1 Score   Top Chunk   
 ------------------------------------------
-q1     8.75         0.294      chunk_0027  
-q2     1.33         0.353      chunk_0034  
-q3     3.90         0.476      chunk_0043  
-q4     3.66         0.133      chunk_0120  
-q5     2.89         0.320      chunk_0087  
-q6     7.90         0.404      chunk_0089  
-q7     4.85         0.667      chunk_0110  
-q8     3.59         0.541      chunk_0000  
-
-================================================================================
-DETAILED RESULTS: PINECONE_HNSW
-================================================================================
-
-Hyperparameters:
-  Database: pinecone
-  Index Type: HNSW
-  metric: cosine
-  cloud: aws
-  region: us-east-1
-  spec: serverless
-
-Performance Metrics:
-  Index Build Time: 16.094s
-  Average Search Time: 58.77ms
-  Average F1 Score: 0.419
-
-Per-Question Results:
-ID     Search(ms)   F1 Score   Top Chunk   
-------------------------------------------
-q1     73.96        0.550      chunk_0027  
-q2     81.54        0.353      chunk_0034  
-q3     78.25        0.409      chunk_0043  
-q4     82.03        0.118      chunk_0120  
-q5     39.02        0.314      chunk_0087  
-q6     39.08        0.404      chunk_0089  
-q7     39.52        0.667      chunk_0110  
-q8     36.79        0.541      chunk_0000  
-
-================================================================================
-DETAILED RESULTS: PINECONE_IVF
-================================================================================
-
-Hyperparameters:
-  Database: pinecone
-  Index Type: IVF
-  metric: cosine
-  cloud: aws
-  region: us-east-1
-  spec: serverless
-
-Performance Metrics:
-  Index Build Time: 17.821s
-  Average Search Time: 94.10ms
-  Average F1 Score: 0.389
-
-Per-Question Results:
-ID     Search(ms)   F1 Score   Top Chunk   
-------------------------------------------
-q1     84.94        0.294      chunk_0027  
-q2     241.27       0.353      chunk_0034  
-q3     67.73        0.409      chunk_0043  
-q4     84.11        0.130      chunk_0120  
-q5     76.42        0.314      chunk_0087  
-q6     75.56        0.404      chunk_0089  
-q7     39.98        0.667      chunk_0110  
-q8     82.78        0.541      chunk_0000  
+q1     12.13        0.294      chunk_0027  
+q2     2.11         0.353      chunk_0034  
+q3     3.01         0.476      chunk_0043  
+q4     3.09         0.128      chunk_0120  
+q5     3.54         0.314      chunk_0087  
+q6     3.60         0.404      chunk_0089  
+q7     3.29         0.667      chunk_0110  
+q8     5.39         0.541      chunk_0000  
 
 ================================================================================
 DETAILED RESULTS: POSTGRES_HNSW
@@ -160,21 +102,21 @@ Hyperparameters:
   distance: cosine
 
 Performance Metrics:
-  Index Build Time: 0.495s
-  Average Search Time: 16.65ms
-  Average F1 Score: 0.369
+  Index Build Time: 0.508s
+  Average Search Time: 16.34ms
+  Average F1 Score: 0.411
 
 Per-Question Results:
 ID     Search(ms)   F1 Score   Top Chunk   
 ------------------------------------------
-q1     20.65        0.419      chunk_0027  
-q2     16.42        0.353      chunk_0034  
-q3     15.02        0.476      chunk_0043  
-q4     17.39        0.118      chunk_0120  
-q5     19.16        0.314      chunk_0087  
-q6     11.98        0.404      chunk_0089  
-q7     15.67        0.667      chunk_0110  
-q8     16.89        0.200      chunk_0000  
+q1     23.07        0.419      chunk_0027  
+q2     13.59        0.353      chunk_0034  
+q3     16.76        0.476      chunk_0043  
+q4     15.87        0.118      chunk_0120  
+q5     17.78        0.314      chunk_0087  
+q6     12.59        0.404      chunk_0089  
+q7     15.93        0.667      chunk_0110  
+q8     15.12        0.541      chunk_0000  
 
 ================================================================================
 DETAILED RESULTS: POSTGRES_IVF
@@ -188,35 +130,93 @@ Hyperparameters:
   distance: cosine
 
 Performance Metrics:
-  Index Build Time: 0.515s
-  Average Search Time: 16.35ms
-  Average F1 Score: 0.410
+  Index Build Time: 0.562s
+  Average Search Time: 17.23ms
+  Average F1 Score: 0.411
 
 Per-Question Results:
 ID     Search(ms)   F1 Score   Top Chunk   
 ------------------------------------------
-q1     17.46        0.419      chunk_0027  
-q2     18.18        0.353      chunk_0034  
-q3     16.07        0.409      chunk_0043  
-q4     10.92        0.133      chunk_0120  
-q5     17.94        0.314      chunk_0087  
-q6     19.35        0.444      chunk_0089  
-q7     19.08        0.667      chunk_0110  
-q8     11.80        0.541      chunk_0000  
+q1     20.74        0.419      chunk_0027  
+q2     14.90        0.353      chunk_0034  
+q3     19.78        0.476      chunk_0043  
+q4     16.14        0.118      chunk_0120  
+q5     15.35        0.314      chunk_0087  
+q6     16.40        0.404      chunk_0089  
+q7     19.05        0.667      chunk_0110  
+q8     15.48        0.541      chunk_0000  
+
+================================================================================
+DETAILED RESULTS: PINECONE_HNSW
+================================================================================
+
+Hyperparameters:
+  Database: pinecone
+  Index Type: HNSW
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Performance Metrics:
+  Index Build Time: 14.120s
+  Average Search Time: 53.46ms
+  Average F1 Score: 0.413
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     76.16        0.419      chunk_0027  
+q2     38.73        0.353      chunk_0034  
+q3     71.88        0.476      chunk_0043  
+q4     37.68        0.130      chunk_0120  
+q5     39.43        0.314      chunk_0087  
+q6     34.69        0.404      chunk_0089  
+q7     88.35        0.667      chunk_0110  
+q8     40.77        0.541      chunk_0000  
+
+================================================================================
+DETAILED RESULTS: PINECONE_IVF
+================================================================================
+
+Hyperparameters:
+  Database: pinecone
+  Index Type: IVF
+  metric: cosine
+  cloud: aws
+  region: us-east-1
+  spec: serverless
+
+Performance Metrics:
+  Index Build Time: 14.988s
+  Average Search Time: 62.05ms
+  Average F1 Score: 0.408
+
+Per-Question Results:
+ID     Search(ms)   F1 Score   Top Chunk   
+------------------------------------------
+q1     78.77        0.419      chunk_0027  
+q2     99.17        0.353      chunk_0034  
+q3     38.73        0.409      chunk_0043  
+q4     79.88        0.118      chunk_0120  
+q5     36.93        0.314      chunk_0087  
+q6     84.61        0.444      chunk_0089  
+q7     40.66        0.667      chunk_0110  
+q8     37.63        0.541      chunk_0000  
 
 ================================================================================
 PER-QUESTION COMPARISON (F1 Scores)
 ================================================================================
-Question   chromadb_hns chromadb_ivf pinecone_hns pinecone_ivf postgres_hns postgres_ivf
+Question   chromadb_hns chromadb_ivf postgres_hns postgres_ivf pinecone_hns pinecone_ivf
 ----------------------------------------------------------------------------------------
-q1         0.419        0.294        0.550        0.294        0.419        0.419       
+q1         0.419        0.294        0.419        0.419        0.419        0.419       
 q2         0.353        0.353        0.353        0.353        0.353        0.353       
-q3         0.409        0.476        0.409        0.409        0.476        0.409       
-q4         0.118        0.133        0.118        0.130        0.118        0.133       
-q5         0.320        0.320        0.314        0.314        0.314        0.314       
-q6         0.373        0.404        0.404        0.404        0.404        0.444       
+q3         0.476        0.476        0.476        0.476        0.476        0.409       
+q4         0.130        0.128        0.118        0.118        0.130        0.118       
+q5         0.327        0.314        0.314        0.314        0.314        0.314       
+q6         0.404        0.404        0.404        0.404        0.404        0.444       
 q7         0.667        0.667        0.667        0.667        0.667        0.667       
-q8         0.541        0.541        0.541        0.541        0.200        0.541       
+q8         0.541        0.541        0.541        0.541        0.541        0.541       
 
 ================================================================================
 END OF BENCHMARK REPORT

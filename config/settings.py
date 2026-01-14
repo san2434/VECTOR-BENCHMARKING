@@ -47,14 +47,20 @@ MIN_CHUNK_SIZE = 100      # Minimum chunk size to keep
 # VECTOR DATABASE CONFIGURATIONS
 # =============================================================================
 
-# All 6 configurations to benchmark
+# All 10 configurations to benchmark (5 DBs × 2 index types)
 BENCHMARK_CONFIGURATIONS: List[Dict] = [
+    # Cloud-based
     {"db": "pinecone", "index_type": "IVF", "name": "pinecone_ivf"},
     {"db": "pinecone", "index_type": "HNSW", "name": "pinecone_hnsw"},
+    # Local databases
     {"db": "chromadb", "index_type": "IVF", "name": "chromadb_ivf"},
     {"db": "chromadb", "index_type": "HNSW", "name": "chromadb_hnsw"},
     {"db": "postgres", "index_type": "IVF", "name": "postgres_ivf"},
     {"db": "postgres", "index_type": "HNSW", "name": "postgres_hnsw"},
+    {"db": "qdrant", "index_type": "IVF", "name": "qdrant_ivf"},
+    {"db": "qdrant", "index_type": "HNSW", "name": "qdrant_hnsw"},
+    {"db": "milvus", "index_type": "IVF", "name": "milvus_ivf"},
+    {"db": "milvus", "index_type": "HNSW", "name": "milvus_hnsw"},
 ]
 
 # Pinecone Configuration
@@ -103,6 +109,33 @@ POSTGRESQL_CONFIG = {
         "ef_construction": 64,
         "ef_search": 40,
     },
+}
+
+# Qdrant Configuration (Local)
+QDRANT_CONFIG = {
+    "persist_directory": "./data/qdrant",
+    "embedding_dimension": EMBEDDING_DIMENSION,
+    # HNSW parameters
+    "hnsw_m": 16,                    # Max connections per node
+    "hnsw_ef_construction": 200,     # Construction time accuracy
+    "hnsw_ef_search": 128,           # Search time accuracy
+    # IVF-like parameters (simulated via HNSW tuning)
+    "ivf_m": 8,                      # Lower connectivity for IVF-like behavior
+    "ivf_ef_construction": 50,       # Faster construction
+    "ivf_ef_search": 16,             # Fewer candidates
+}
+
+# Milvus Configuration (Local - Milvus Lite)
+MILVUS_CONFIG = {
+    "persist_directory": "./data/milvus",
+    "embedding_dimension": EMBEDDING_DIMENSION,
+    # HNSW parameters
+    "hnsw_m": 16,
+    "hnsw_ef_construction": 200,
+    "hnsw_ef_search": 128,
+    # IVF parameters (true IVF_FLAT)
+    "ivf_nlist": 100,                # Number of clusters
+    "ivf_nprobe": 10,                # Clusters to search
 }
 
 # =============================================================================

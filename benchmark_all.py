@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Complete RAG Benchmark Suite
-Tests all 6 configurations: 3 Vector DBs × 2 Index Types
+Tests all 10 configurations: 5 Vector DBs × 2 Index Types
 Uses cached embeddings for fair comparison.
 """
 
@@ -79,6 +79,45 @@ CONFIGS = {
             "lists": 100,
             "probes": 10,
             "distance": "cosine",
+        }
+    },
+    "qdrant_hnsw": {
+        "db": "qdrant",
+        "index_type": "HNSW",
+        "params": {
+            "distance": "cosine",
+            "hnsw_m": 16,
+            "hnsw_ef_construct": 200,
+            "hnsw_ef_search": 128,
+        }
+    },
+    "qdrant_ivf": {
+        "db": "qdrant",
+        "index_type": "IVF",
+        "params": {
+            "distance": "cosine",
+            "hnsw_m": 8,  # Lower M for IVF-like behavior
+            "hnsw_ef_construct": 50,
+            "hnsw_ef_search": 16,
+        }
+    },
+    "milvus_hnsw": {
+        "db": "milvus",
+        "index_type": "HNSW",
+        "params": {
+            "metric": "COSINE",
+            "hnsw_m": 16,
+            "hnsw_ef_construction": 200,
+            "hnsw_ef_search": 128,
+        }
+    },
+    "milvus_ivf": {
+        "db": "milvus",
+        "index_type": "IVF",
+        "params": {
+            "metric": "COSINE",
+            "ivf_nlist": 100,
+            "ivf_nprobe": 10,
         }
     },
 }
@@ -482,6 +521,261 @@ def benchmark_postgres(config_name: str, config: dict, chunks: List[dict],
     }
 
 # =============================================================================
+# QDRANT BENCHMARK
+# =============================================================================
+
+def benchmark_qdrant(config_name: str, config: dict, chunks: List[dict],
+                     embeddings: List[List[float]], questions: List[dict],
+                     openai_client: OpenAI) -> dict:
+    """Benchmark Qdrant with specified configuration."""
+    from qdrant_client import QdrantClient
+    from qdrant_client.models import VectorParams, Distance, PointStruct, HnswConfigDiff
+    
+    print(f"\n{'='*60}")
+    print(f"Benchmarking: {config_name}")
+    print(f"{'='*60}")
+    
+    persist_dir = f"./data/qdrant_{config_name}"
+    if os.path.exists(persist_dir):
+        shutil.rmtree(persist_dir)
+    os.makedirs(persist_dir, exist_ok=True)
+    
+    # Create client
+    client = QdrantClient(path=persist_dir)
+    collection_name = "benchmark"
+    
+    # Configure HNSW based on index type
+    if config["index_type"] == "HNSW":
+        hnsw_config = HnswConfigDiff(
+            m=config["params"]["hnsw_m"],
+            ef_construct=config["params"]["hnsw_ef_construct"],
+        )
+        ef_search = config["params"]["hnsw_ef_search"]
+    else:  # IVF-like (simulated via HNSW tuning)
+        hnsw_config = HnswConfigDiff(
+            m=config["params"]["hnsw_m"],
+            ef_construct=config["params"]["hnsw_ef_construct"],
+        )
+        ef_search = config["params"]["hnsw_ef_search"]
+    
+    # Create collection
+    print("Creating collection...")
+    index_start = time.time()
+    
+    client.create_collection(
+        collection_name=collection_name,
+        vectors_config=VectorParams(
+            size=1536,
+            distance=Distance.COSINE
+        ),
+        hnsw_config=hnsw_config
+    )
+    
+    # Insert vectors
+    print("Inserting vectors...")
+    points = []
+    for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+        points.append(PointStruct(
+            id=i,
+            vector=embedding,
+            payload={
+                "chunk_id": chunk["id"],
+                "text": chunk["text"],
+                "start": chunk["start"],
+                "end": chunk["end"]
+            }
+        ))
+    
+    client.upsert(collection_name=collection_name, points=points)
+    
+    index_time = time.time() - index_start
+    print(f"  Index time: {index_time:.3f}s")
+    
+    # Run queries
+    results = []
+    total_search_time = 0
+    
+    print("Running queries...")
+    for qa in questions:
+        question = qa["text"]
+        expected = qa["answer"]
+        
+        # Embed query
+        query_embedding = embed_query(openai_client, question)
+        
+        # Search using query method (newer qdrant-client API)
+        search_start = time.time()
+        search_results = client.query_points(
+            collection_name=collection_name,
+            query=query_embedding,
+            limit=5,
+            search_params={"ef": ef_search}
+        ).points
+        search_time = (time.time() - search_start) * 1000
+        total_search_time += search_time
+        
+        # Extract texts
+        retrieved_texts = [hit.payload["text"] for hit in search_results]
+        
+        # Generate answer
+        answer = generate_rag_answer(openai_client, question, retrieved_texts)
+        f1 = calculate_f1(expected, answer)
+        
+        results.append({
+            "id": qa["id"],
+            "question": question,
+            "expected": expected,
+            "answer": answer,
+            "search_time_ms": search_time,
+            "f1_score": f1,
+            "top_chunks": [hit.payload["chunk_id"] for hit in search_results[:3]],
+            "scores": [hit.score for hit in search_results[:3]]
+        })
+        print(f"  {qa['id']}: F1={f1:.3f}, Search={search_time:.2f}ms")
+    
+    # Cleanup
+    del client
+    gc.collect()
+    
+    return {
+        "config_name": config_name,
+        "config": config,
+        "index_time_s": index_time,
+        "avg_search_time_ms": total_search_time / len(questions),
+        "avg_f1_score": sum(r["f1_score"] for r in results) / len(results),
+        "results": results
+    }
+
+# =============================================================================
+# MILVUS BENCHMARK
+# =============================================================================
+
+def benchmark_milvus(config_name: str, config: dict, chunks: List[dict],
+                     embeddings: List[List[float]], questions: List[dict],
+                     openai_client: OpenAI) -> dict:
+    """Benchmark Milvus (Lite) with specified configuration."""
+    from pymilvus import MilvusClient
+    
+    print(f"\n{'='*60}")
+    print(f"Benchmarking: {config_name}")
+    print(f"{'='*60}")
+    
+    persist_dir = f"./data/milvus_{config_name}"
+    if os.path.exists(persist_dir):
+        shutil.rmtree(persist_dir)
+    os.makedirs(persist_dir, exist_ok=True)
+    
+    db_path = os.path.join(persist_dir, "benchmark.db")
+    collection_name = "benchmark"
+    
+    # Create client
+    client = MilvusClient(db_path)
+    
+    # Configure search params based on index type
+    if config["index_type"] == "HNSW":
+        search_params = {
+            "metric_type": config["params"]["metric"],
+            "params": {"ef": config["params"]["hnsw_ef_search"]}
+        }
+    else:  # IVF
+        search_params = {
+            "metric_type": config["params"]["metric"],
+            "params": {"nprobe": config["params"]["ivf_nprobe"]}
+        }
+    
+    # Create collection
+    print("Creating collection...")
+    index_start = time.time()
+    
+    client.create_collection(
+        collection_name=collection_name,
+        dimension=1536,
+        metric_type="COSINE",
+        auto_id=False
+    )
+    
+    # Insert vectors
+    print("Inserting vectors...")
+    data = []
+    for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+        data.append({
+            "id": i,
+            "vector": embedding,
+            "chunk_id": chunk["id"],
+            "text": chunk["text"][:65000],  # Milvus field size limit
+            "start": chunk["start"],
+            "end": chunk["end"]
+        })
+    
+    client.insert(collection_name=collection_name, data=data)
+    
+    index_time = time.time() - index_start
+    print(f"  Index time: {index_time:.3f}s")
+    
+    # Run queries
+    results = []
+    total_search_time = 0
+    
+    print("Running queries...")
+    for qa in questions:
+        question = qa["text"]
+        expected = qa["answer"]
+        
+        # Embed query
+        query_embedding = embed_query(openai_client, question)
+        
+        # Search
+        search_start = time.time()
+        search_results = client.search(
+            collection_name=collection_name,
+            data=[query_embedding],
+            limit=5,
+            output_fields=["text", "chunk_id"],
+            search_params=search_params
+        )
+        search_time = (time.time() - search_start) * 1000
+        total_search_time += search_time
+        
+        # Extract texts
+        retrieved_texts = []
+        chunk_ids = []
+        scores = []
+        if search_results and len(search_results) > 0:
+            for hit in search_results[0]:
+                retrieved_texts.append(hit.get("entity", {}).get("text", ""))
+                chunk_ids.append(hit.get("entity", {}).get("chunk_id", ""))
+                scores.append(hit.get("distance", 0.0))
+        
+        # Generate answer
+        answer = generate_rag_answer(openai_client, question, retrieved_texts)
+        f1 = calculate_f1(expected, answer)
+        
+        results.append({
+            "id": qa["id"],
+            "question": question,
+            "expected": expected,
+            "answer": answer,
+            "search_time_ms": search_time,
+            "f1_score": f1,
+            "top_chunks": chunk_ids[:3],
+            "scores": scores[:3]
+        })
+        print(f"  {qa['id']}: F1={f1:.3f}, Search={search_time:.2f}ms")
+    
+    # Cleanup
+    del client
+    gc.collect()
+    
+    return {
+        "config_name": config_name,
+        "config": config,
+        "index_time_s": index_time,
+        "avg_search_time_ms": total_search_time / len(questions),
+        "avg_f1_score": sum(r["f1_score"] for r in results) / len(results),
+        "results": results
+    }
+
+# =============================================================================
 # MAIN BENCHMARK RUNNER
 # =============================================================================
 
@@ -583,7 +877,8 @@ def generate_comparison_report(all_results: List[dict], metadata: dict) -> str:
 def main():
     print("=" * 60)
     print("RAG Vector Database Benchmark Suite")
-    print("Testing: ChromaDB, Pinecone, PostgreSQL × HNSW, IVF")
+    print("Testing: ChromaDB, Pinecone, PostgreSQL, Qdrant, Milvus")
+    print("Index Types: HNSW, IVF")
     print("=" * 60)
     
     # Load data
@@ -595,14 +890,20 @@ def main():
     
     all_results = []
     
-    # Run all benchmarks
+    # Run all benchmarks (10 configurations)
     configs_to_run = [
+        # Local databases
         ("chromadb_hnsw", benchmark_chromadb),
         ("chromadb_ivf", benchmark_chromadb),
-        ("pinecone_hnsw", benchmark_pinecone),
-        ("pinecone_ivf", benchmark_pinecone),
         ("postgres_hnsw", benchmark_postgres),
         ("postgres_ivf", benchmark_postgres),
+        ("qdrant_hnsw", benchmark_qdrant),
+        ("qdrant_ivf", benchmark_qdrant),
+        ("milvus_hnsw", benchmark_milvus),
+        ("milvus_ivf", benchmark_milvus),
+        # Cloud database
+        ("pinecone_hnsw", benchmark_pinecone),
+        ("pinecone_ivf", benchmark_pinecone),
     ]
     
     for config_name, benchmark_fn in configs_to_run:
